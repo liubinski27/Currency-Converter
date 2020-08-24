@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="chooseDate">
+        <p>Выберите дату для получения курсов валют:</p>
+        <input [ngClass]="{ok: isDateOk}" type="date" [(ngModel)]="dateValue" (input)="sendDateToService()">
+    </div>
+    <div *ngIf="currenciesList; else loading" class="main">
+        <div class="converterMenu">
+            <button (click)="addSelectedCurrencies()">Добавить валюту</button>
+            <select class="form-control" name="currency" [(ngModel)]="currency" [disabled]="isSelectDisable">
+                <option *ngFor="let cur of currenciesList" [value]="cur.abbr"
+                    [disabled]="disableOption(cur.abbr)">
+                    {{ cur.abbr }}
+                </option>
+            </select>
+        </div>
+        <div class="inputValue">
+            <input type="text" (input)="convertInputToByn($event.target.value, 1, 1, -1)"
+                [value]="convertInputToCur(1, 1, -1)">
+            <span>BYN</span>
+        </div>
+        <div class="inputValue" *ngFor="let selectedCur of selectedCurrencies; let i = index">
+            <input type="text" (input)="convertInputToByn($event.target.value, selectedCur.scale, selectedCur.rate, i)"
+                [value]="convertInputToCur(selectedCur.scale, selectedCur.rate, i)">
+            <span>{{ selectedCur.abbr }}</span>
+            <button (click)="deleteInput(selectedCur.abbr)">x</button>
+        </div>
+    </div>
+    <ng-template #loading>
+        <span>Загрузка курсов валют...</span>
+    </ng-template>
+</div>

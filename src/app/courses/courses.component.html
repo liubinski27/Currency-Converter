@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="chooseDate">
+        <p>Выберите дату для получения курсов валют:</p>
+        <input [ngClass]="{ok: isDateOk}" type="date" [(ngModel)]="dateValue" (input)="sendDateToService()">
+    </div>
+    <div *ngIf="currenciesList; else loading">
+        <div class="currency" *ngFor="let cur of currenciesList">
+            <span class="curScale">{{ cur.scale }}</span>
+            <span class="curAbbr">{{ cur.abbr }}</span>
+            <span class="curRate">{{ cur.rate }}</span>
+            <span class="curAbbr">BYN</span>
+            <span class="curName">{{ cur.name }}</span>
+        </div>
+    </div>
+    <ng-template #loading>
+        <span>Загрузка курсов валют...</span>
+    </ng-template>
+</div>

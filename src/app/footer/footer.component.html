@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="footerFlex">
+        <div class="logo">
+            <p>Курсы популярных валют на сегодня:</p>
+        </div>
+        <div *ngIf="currenciesList.length > 1; else error">
+            <div class="someCourses">
+                <ul>
+                    <li *ngFor="let cur of curListForFooter">
+                        <p>{{ cur.abbr }}</p><br />
+                        <p>{{ calcRatesValue(cur.scale, cur.rate) }}</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ng-template #error>
+            <p>Данных нет.</p>
+        </ng-template>
+    </div>
+</div>

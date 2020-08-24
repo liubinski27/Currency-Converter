@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    outline: none;
+}
+
+.container {
+    .chooseDate {
+        p {
+            margin: 15px 15px 15px 15px;
+        }
+
+        input {
+            width: 200px;
+            height: 30px;
+            border: 2px solid red;
+            margin: 5px 15px 15px 15px;
+        }
+
+        .ok {
+            border: 2px solid green;
+        }
+    }
+
+    .currency {
+        border: 1px solid silver;
+        box-shadow: inset 1px;
+        display: flex;
+        font-size: 20px;
+        padding: 5px 10px 5px 10px;
+
+        .curScale {
+            width: 20%;
+            text-align: right;
+        }
+
+        .curAbbr {
+            width: 20%;
+            text-align: center;
+            color: #a58900;
+        }
+
+        .curRate {
+            width: 20%;
+            text-align: center;
+        }
+
+        .curName {
+            margin: 0px 0px 0px 20px;
+            width: 100%;
+        }
+    }
+
+    .currency:nth-child(even) {
+        background-color: rgb(231, 227, 206);
+    }
+
+    #loading {
+        margin: 0px 0px 15px 15px;
+        color: gray;
+    }
+}

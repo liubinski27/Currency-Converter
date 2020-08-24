@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
+
+* {
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+.container {
+
+    .chooseDate {
+        p {
+            margin: 15px 15px 15px 15px;
+        }
+
+        input {
+            width: 200px;
+            height: 30px;
+            border: 2px solid red;
+            margin: 5px 15px 15px 15px;
+        }
+
+        .ok {
+            border: 2px solid green;
+        }
+    }
+
+    .main {
+        margin: 0px 15px 0px 15px;
+    }
+
+    button,
+    select {
+        outline: none;
+        border: 1px solid black;
+        border-radius: 0px;
+    }
+
+    input {
+        outline: none;
+        border-radius: 0px;
+        border: 2px solid silver;
+    }
+
+    button:hover,
+    select:hover {
+        cursor: pointer;
+    }
+
+    input:hover {
+        border: 1px solid black;
+    }
+
+    .converterMenu {
+        display: flex;
+        justify-content: space-between;
+        width: 200px;
+        margin: 0px 0px 15px 0px;
+
+        button {
+            position: relative;
+            width: 130px;
+            height: 30px;
+        }
+
+        button:active {
+            width: 128px;
+            height: 28px;
+            left: 1px;
+            top: 1px;
+        }
+
+        select {
+            height: 30px;
+            text-align: center;
+        }
+    }
+
+    .inputValue {
+        display: flex;
+        flex-flow: row;
+        justify-content: left;
+        align-items: center;
+        margin: 0px 0px 15px 0px;
+
+        input {
+            height: 30px;
+            width: 200px;
+            margin: 0px 10px 0px 0px;
+            font-size: 15px;
+        }
+
+        span {
+            width: 42px;
+            line-height: 30px;
+        }
+
+        button {
+            width: 30px;
+            height: 30px;
+            font-size: 20px;
+            text-align: center;
+        }
+    }
+
+    .loading {
+        margin: 0px 0px 10px 15px;
+    }
+}

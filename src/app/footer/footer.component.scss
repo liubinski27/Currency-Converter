@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
+
+$footerContainerColor: #ffe773;
+
+* {
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+.container {
+    background-color: $footerContainerColor;
+    padding: 0px 20px 0px 20px;
+
+    .footerFlex {
+        display: flex;
+        justify-content: space-between;
+
+        .someCourses {
+
+            ul {
+                padding: 0px;
+                border: 2px groove gray;
+
+                li {
+                    display: inline-block;
+                    line-height: 0px;
+                    margin: 0px 10px 0px 10px;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
