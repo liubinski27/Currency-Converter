@@ -28,7 +28,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule, RouterModule.forRoot(appRoutes), FormsModule, HttpClientModule
   ],
-  providers: [ConverterService, ConverterComponent],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

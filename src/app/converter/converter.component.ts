@@ -1,6 +1,5 @@
 import { ConverterService } from './../converter.service';
 import { Component, OnInit } from '@angular/core';
-import { DatePipe } from '@angular/common';
 import { Currency } from '../shared/currency';
 import { CurrencyResponse } from '../shared/currency-response';
 
@@ -18,25 +17,7 @@ interface keysForSave {
 export class ConverterComponent implements OnInit {
 
   constructor(private converterService: ConverterService) {
-    this.converterService.getCurrencies().subscribe((response: CurrencyResponse[]) => {
-      this.isDateOk = false;
-      this.isSelectDisable = true;
-      this.currenciesList = response.map(el => ({
-        id: el.Cur_ID,
-        date: el.Date,
-        abbr: el.Cur_Abbreviation,
-        scale: el.Cur_Scale,
-        name: el.Cur_Name,
-        rate: el.Cur_OfficialRate
-      }));
-      //this.currencies.next(currencies);
-      this.currency = this.currenciesList[0].abbr;
-      if (this.currenciesList) {
-        this.isDateOk = true;
-        this.isSelectDisable = false;
-      }
-      console.log('converter loaded');
-    });
+    this.getCurrencies();
     this.getSavedData();
   }
 
@@ -53,6 +34,26 @@ export class ConverterComponent implements OnInit {
     valueInByn: this.inputValueInByn,
     selectCurList: this.selectedCurrencies
   };
+
+  getCurrencies() {
+    this.converterService.getCurrencies().subscribe((response: CurrencyResponse[]) => {
+      this.isDateOk = false;
+      this.isSelectDisable = true;
+      this.currenciesList = response.map(el => ({
+        id: el.Cur_ID,
+        date: el.Date,
+        abbr: el.Cur_Abbreviation,
+        scale: el.Cur_Scale,
+        name: el.Cur_Name,
+        rate: el.Cur_OfficialRate
+      }));
+      this.currency = this.currenciesList[0].abbr;
+      if (this.currenciesList) {
+        this.isDateOk = true;
+        this.isSelectDisable = false;
+      }
+    });
+  }
 
   addSelectedCurrencies() {
     const selectedCurrency = this.selectedCurrencies.find(item => item.abbr === this.currency);
@@ -71,7 +72,7 @@ export class ConverterComponent implements OnInit {
       this.selectedCurrencies.splice(curForDel, 1);
     }
     if (this.selectedCurrencies.length === 0) {
-      this.clearCache();
+      this.clearSavedValues();
     }
     this.saveData();
   }
@@ -103,11 +104,11 @@ export class ConverterComponent implements OnInit {
   sendDateToService() {
     this.converterService.date = this.dateValue;
     this.selectedCurrencies = [];
-    this.clearCache();
-    this.converterService.getCurrencies();
+    this.clearSavedValues();
+    this.getCurrencies();
   }
 
-  clearCache() {
+  clearSavedValues() {
     this.inputValueInByn = 0;
     this.savedCurValue = 0;
     this.savedCurIndex = 0;
@@ -123,8 +124,13 @@ export class ConverterComponent implements OnInit {
     if (sessionStorage.getItem('converter') !== null) {
       const saved = sessionStorage.getItem('converter');
       const parsedSaved = JSON.parse(saved);
-      this.inputValueInByn = parsedSaved.valueInByn;
-      this.selectedCurrencies = parsedSaved.selectCurList;
+      if (parsedSaved) {
+        this.inputValueInByn = parsedSaved.valueInByn;
+        this.selectedCurrencies = parsedSaved.selectCurList;
+      }
+      else {
+        this.clearSavedValues();
+      }
     }
   }
 

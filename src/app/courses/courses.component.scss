@@ -1,15 +1,13 @@
 * {
     box-sizing: border-box;
-    font-family: "Roboto", sans-serif;
     outline: none;
+    margin: 0;
+    padding: 0;
 }
 
-.container {
-    .chooseDate {
-        p {
-            margin: 15px 15px 15px 15px;
-        }
+.container-fluid {
 
+    .chooseDate {
         input {
             width: 200px;
             height: 30px;
@@ -22,41 +20,57 @@
         }
     }
 
-    .currency {
+    .row {
         border: 1px solid silver;
         box-shadow: inset 1px;
         display: flex;
         font-size: 20px;
         padding: 5px 10px 5px 10px;
+        justify-content: space-between;
 
-        .curScale {
-            width: 20%;
+        span {
+            text-align: center;
+        }
+
+        span:first-child {
             text-align: right;
         }
 
-        .curAbbr {
-            width: 20%;
-            text-align: center;
+        span:last-child {
+            text-align: left;
+        }
+
+        span:nth-child(even) {
             color: #a58900;
-        }
-
-        .curRate {
-            width: 20%;
-            text-align: center;
-        }
-
-        .curName {
-            margin: 0px 0px 0px 20px;
-            width: 100%;
         }
     }
 
-    .currency:nth-child(even) {
+    .row:nth-child(odd) {
         background-color: rgb(231, 227, 206);
     }
 
-    #loading {
+    .loading {
         margin: 0px 0px 15px 15px;
         color: gray;
+    }
+}
+
+@media (max-width: 768px) {
+    .row {
+        padding: 0px!important;
+
+        span {
+            padding: 5px;
+            text-align: center!important;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .row {
+        span {
+            padding: 0px;
+            line-height: 25px;
+        }
     }
 }

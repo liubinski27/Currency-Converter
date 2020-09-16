@@ -11,6 +11,14 @@ import { CurrencyResponse } from '../shared/currency-response';
 export class CoursesComponent implements OnInit {
 
   constructor(private converterService: ConverterService) {
+    this.getCurrencies();
+  }
+
+  currenciesList: Currency[];
+  dateValue: string;
+  isDateOk: boolean;
+
+  getCurrencies() {
     this.converterService.getCurrencies().subscribe((response: CurrencyResponse[]) => {
       this.isDateOk = false;
       this.currenciesList = response.map(el => ({
@@ -21,21 +29,15 @@ export class CoursesComponent implements OnInit {
         name: el.Cur_Name,
         rate: el.Cur_OfficialRate
       }));
-      //this.currencies.next(currencies);
       if (this.currenciesList) {
         this.isDateOk = true;
       }
-      console.log('courses loaded');
     });
   }
 
-  currenciesList: Currency[];
-  dateValue: string;
-  isDateOk: boolean;
-
   sendDateToService() {
     this.converterService.date = this.dateValue;
-    this.converterService.getCurrencies();
+    this.getCurrencies();
   }
 
   ngOnInit(): void {

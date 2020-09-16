@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container-fluid">
     <div class="chooseDate">
-        <p>Выберите дату для получения курсов валют:</p>
-        <input [ngClass]="{ok: isDateOk}" type="date" [(ngModel)]="dateValue" (input)="sendDateToService()">
+        <p i18n class="m-3">Выберите дату для получения курсов валют:</p>
+        <input onkeypress="return false" [ngClass]="{ok: isDateOk}" type="date" [(ngModel)]="dateValue" (input)="sendDateToService()">
     </div>
     <div *ngIf="currenciesList; else loading" class="main">
         <div class="converterMenu">
@@ -26,6 +26,6 @@
         </div>
     </div>
     <ng-template #loading>
-        <span>Загрузка курсов валют...</span>
+        <div class="loading">Загрузка курсов валют...</div>
     </ng-template>
 </div>

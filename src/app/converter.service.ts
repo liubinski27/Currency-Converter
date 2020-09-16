@@ -8,7 +8,7 @@ import { HttpClient } from "@angular/common/http";
 export class ConverterService {
 
   constructor(private http: HttpClient) {
-    this.getCurrencies();
+
   }
 
   date: string;
