@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <div class="logo col-sm-4 col-md-4 col-lg-6">
+            <h1>Convert</h1>
+        </div>
+        <nav class="navigation col-sm-8 col-md-8 col-lg-6">
+            <a i18n="navCourses" routerLink="">{{ 'NAVIGATION.RATES' | translate }}</a>
+            <a i18n="navConverter" routerLink="/converter">{{ 'NAVIGATION.CONVERTER' | translate }}</a>
+        </nav>
+        <div class="menu-toggle">
+            <input id="menu__toggle" type="checkbox" />
+            <label class="menu__btn" for="menu__toggle">
+                <span></span>
+            </label>
+            <ul class="menu__box">
+                <li><a i18n="navCourses" class="menu__item" routerLink="">{{ 'NAVIGATION.RATES' | translate }}</a></li>
+                <li><a i18n="navConverter" class="menu__item" routerLink="/converter">{{ 'NAVIGATION.CONVERTER' | translate }}</a></li>
+                <li>
+                    <p>Convert</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

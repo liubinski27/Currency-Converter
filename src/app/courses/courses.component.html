@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="chooseDate">
+        <p i18n="chooseDate" class="m-3">{{ 'CHOOSE_DATE.TITLE' | translate }}</p>
+        <input onkeypress="return false" [ngClass]="{ok: isDateOk}" type="date" [(ngModel)]="dateValue" (input)="sendDateToService()">
+    </div>
+    <div *ngIf="currenciesList; else loading">
+        <div class="row" *ngFor="let cur of currenciesList">
+            <span class="col-md-1 col-sm-3 col-xs-3">{{ cur.scale }}</span>
+            <span class="col-md-1 col-sm-3 col-xs-3">{{ cur.abbr }}</span>
+            <span class="col-md-1 col-sm-3 col-xs-3">{{ cur.rate }}</span>
+            <span class="col-md-1 col-sm-3 col-xs-3">BYN</span>
+            <span class="col-md-6 col-sm-12 col-xs-12">{{ cur.name }}</span>
+        </div>
+    </div>
+    <ng-template #loading>
+        <div i18n="loadingCourses" class="loading">{{ 'LOADING.TITLE' | translate }}</div>
+    </ng-template>
+</div>

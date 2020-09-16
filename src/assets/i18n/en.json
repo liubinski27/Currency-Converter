@@ -1,0 +1,18 @@
+{
+    "CHOOSE_DATE": {
+        "TITLE": "Select a date to receive currency rates:"
+    },
+    "BUTTON": {
+        "ADD_CUR": "Add currency"
+    },
+    "LOADING": {
+        "TITLE": "Loading currency rates..."
+    },
+    "NAVIGATION": {
+        "RATES": "Currency rates",
+        "CONVERTER": "Online converter"
+    },
+    "FOOTER": {
+        "TITLE": "Rates of popular currencies for today:"
+    }
+}

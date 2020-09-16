@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="footer">
+        <div class="logo">
+            <p i18n="footerCourses">{{ 'FOOTER.TITLE' | translate }}</p>
+        </div>
+        <div *ngIf="currenciesList.length > 1; else error" class="popularCourses">
+            <ul>
+                <li *ngFor="let cur of curListForFooter">
+                    <p>{{ cur.abbr }}</p>
+                    <p>{{ calcRatesValue(cur.scale, cur.rate) }}</p>
+                </li>
+            </ul>
+        </div>
+        <ng-template #error>
+            <p i18n="loadingCourses" class="loading">{{ 'LOADING.TITLE' | translate }}</p>
+        </ng-template>
+    </div>
+</div>

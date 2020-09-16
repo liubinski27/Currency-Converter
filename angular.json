@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "test": {
+    "Currency-Converter": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,11 +17,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/test",
+            "outputPath": "dist/Currency-Converter",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "localize": true,
             "aot": true,
             "assets": [
               "src/favicon.ico",
@@ -66,18 +67,22 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "test:build"
+            "browserTarget": "Currency-Converter:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "test:build:production"
+              "browserTarget": "Currency-Converter:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
+          "sourceLocale": "en-US",
+          "locales": {
+           "en": "src/locale/messages.en.xlf"
+          },
           "options": {
-            "browserTarget": "test:build"
+            "browserTarget": "Currency-Converter:build"
           }
         },
         "test": {
@@ -114,15 +119,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "test:serve"
+            "devServerTarget": "Currency-Converter:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "test:serve:production"
+              "devServerTarget": "Currency-Converter:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "test"
+  "defaultProject": "Currency-Converter"
 }
