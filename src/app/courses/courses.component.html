@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="chooseDate">
-        <p i18n="chooseDate" class="m-3">{{ 'CHOOSE_DATE.TITLE' | translate }}</p>
+        <p class="m-3">{{ 'choose.date' | translate }}</p>
         <input onkeypress="return false" [ngClass]="{ok: isDateOk}" type="date" [(ngModel)]="dateValue" (input)="sendDateToService()">
     </div>
     <div *ngIf="currenciesList; else loading">
@@ -13,6 +13,6 @@
         </div>
     </div>
     <ng-template #loading>
-        <div i18n="loadingCourses" class="loading">{{ 'LOADING.TITLE' | translate }}</div>
+        <div class="loading">{{ 'currencies.loading' | translate }}</div>
     </ng-template>
 </div>

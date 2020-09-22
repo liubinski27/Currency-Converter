@@ -10,13 +10,11 @@ import { CurrencyResponse } from '../shared/currency-response';
 })
 export class CoursesComponent implements OnInit {
 
-  constructor(private converterService: ConverterService) {
-    this.getCurrencies();
-  }
-
   currenciesList: Currency[];
   dateValue: string;
   isDateOk: boolean;
+
+  constructor(private converterService: ConverterService) {}
 
   getCurrencies() {
     this.converterService.getCurrencies().subscribe((response: CurrencyResponse[]) => {
@@ -41,6 +39,7 @@ export class CoursesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getCurrencies();
   }
 
 }

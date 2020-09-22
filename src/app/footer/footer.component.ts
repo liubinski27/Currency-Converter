@@ -10,7 +10,13 @@ import { CurrencyResponse } from '../shared/currency-response';
 })
 export class FooterComponent implements OnInit {
 
-  constructor(private converterService: ConverterService) {
+  currenciesList: Currency[] = [];
+  curListForFooter: Currency[] = [];
+  curAbrForFooter = ['USD', 'EUR', 'RUB', 'PLN', 'UAH'];
+
+  constructor(private converterService: ConverterService) {}
+
+  getCurrencies() {
     this.converterService.getCurrencies().subscribe((response: CurrencyResponse[]) => {
       this.currenciesList = response.map(el => ({
         id: el.Cur_ID,
@@ -20,15 +26,9 @@ export class FooterComponent implements OnInit {
         name: el.Cur_Name,
         rate: el.Cur_OfficialRate
       }));
-      //this.currencies.next(currencies);
       this.addCursInFooter();
-      console.log('footer loaded');
     });
   }
-
-  currenciesList: Currency[] = [];
-  curListForFooter: Currency[] = [];
-  curAbrForFooter = ['USD', 'EUR', 'RUB', 'PLN', 'UAH'];
 
   addCursInFooter() {
     this.curAbrForFooter.forEach(elem => {
@@ -47,6 +47,7 @@ export class FooterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getCurrencies();
   }
 
 }

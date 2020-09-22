@@ -1,7 +1,7 @@
 <div class="container">
     <div class="footer">
         <div class="logo">
-            <p i18n="footerCourses">{{ 'FOOTER.TITLE' | translate }}</p>
+            <p i18n="footerCourses">{{ 'footer.title' | translate }}</p>
         </div>
         <div *ngIf="currenciesList.length > 1; else error" class="popularCourses">
             <ul>
@@ -12,7 +12,7 @@
             </ul>
         </div>
         <ng-template #error>
-            <p i18n="loadingCourses" class="loading">{{ 'LOADING.TITLE' | translate }}</p>
+            <p class="loading">{{ 'currencies.loading' | translate }}</p>
         </ng-template>
     </div>
 </div>

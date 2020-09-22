@@ -16,11 +16,6 @@ interface keysForSave {
 
 export class ConverterComponent implements OnInit {
 
-  constructor(private converterService: ConverterService) {
-    this.getCurrencies();
-    this.getSavedData();
-  }
-
   currenciesList: Currency[];
   currency: string;
   inputValueInByn: number = 0;
@@ -34,6 +29,8 @@ export class ConverterComponent implements OnInit {
     valueInByn: this.inputValueInByn,
     selectCurList: this.selectedCurrencies
   };
+
+  constructor(private converterService: ConverterService) {}
 
   getCurrencies() {
     this.converterService.getCurrencies().subscribe((response: CurrencyResponse[]) => {
@@ -135,6 +132,8 @@ export class ConverterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getCurrencies();
+    this.getSavedData();
   }
 
 }
