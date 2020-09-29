@@ -1,7 +1,7 @@
 import { ConverterService } from './../converter.service';
 import { Component, OnInit } from '@angular/core';
-import { Currency } from '../shared/currency';
-import { CurrencyResponse } from '../shared/currency-response';
+import { Currency } from '../models/ICurrency';
+import { CurrencyResponse } from '../models/ICurrencyResponse';
 
 @Component({
   selector: 'app-footer',
@@ -14,10 +14,10 @@ export class FooterComponent implements OnInit {
   curListForFooter: Currency[] = [];
   curAbrForFooter = ['USD', 'EUR', 'RUB', 'PLN', 'UAH'];
 
-  constructor(private converterService: ConverterService) {}
+  constructor(private converterService: ConverterService) { }
 
   getCurrencies() {
-    this.converterService.getCurrencies().subscribe((response: CurrencyResponse[]) => {
+    this.converterService.getCurrencies('').subscribe((response: CurrencyResponse[]) => {
       this.currenciesList = response.map(el => ({
         id: el.Cur_ID,
         date: el.Date,
@@ -35,8 +35,6 @@ export class FooterComponent implements OnInit {
       const foundCur = this.currenciesList.find(item => item.abbr === elem);
       if (foundCur) {
         this.curListForFooter.push(foundCur);
-      } else {
-        console.log('Error in the array of selected currencies.');
       }
     });
   }

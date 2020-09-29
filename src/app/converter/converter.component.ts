@@ -1,12 +1,9 @@
 import { ConverterService } from './../converter.service';
+import { UrlService } from './../url.service';
 import { Component, OnInit } from '@angular/core';
-import { Currency } from '../shared/currency';
-import { CurrencyResponse } from '../shared/currency-response';
-
-interface keysForSave {
-  valueInByn: number,
-  selectCurList: Currency[]
-}
+import { Currency } from '../models/ICurrency';
+import { CurrencyResponse } from '../models/ICurrencyResponse';
+import { SavedValues } from "../models/ISavedValues";
 
 @Component({
   selector: 'app-converter',
@@ -25,15 +22,18 @@ export class ConverterComponent implements OnInit {
   dateValue: string;
   isDateOk = false;
   isSelectDisable = false;
-  savedData: keysForSave = {
+  savedData: SavedValues = {
     valueInByn: this.inputValueInByn,
     selectCurList: this.selectedCurrencies
   };
 
-  constructor(private converterService: ConverterService) {}
+  constructor(
+    private converterService: ConverterService,
+    private urlService: UrlService
+  ) {}
 
   getCurrencies() {
-    this.converterService.getCurrencies().subscribe((response: CurrencyResponse[]) => {
+    this.converterService.getCurrencies(this.dateValue).subscribe((response: CurrencyResponse[]) => {
       this.isDateOk = false;
       this.isSelectDisable = true;
       this.currenciesList = response.map(el => ({
@@ -44,8 +44,8 @@ export class ConverterComponent implements OnInit {
         name: el.Cur_Name,
         rate: el.Cur_OfficialRate
       }));
-      this.currency = this.currenciesList[0].abbr;
       if (this.currenciesList) {
+        this.currency = this.currenciesList[0].abbr;
         this.isDateOk = true;
         this.isSelectDisable = false;
       }
@@ -98,8 +98,14 @@ export class ConverterComponent implements OnInit {
     }
   }
 
-  sendDateToService() {
+  /*sendDateToService() {
     this.converterService.date = this.dateValue;
+    this.selectedCurrencies = [];
+    this.clearSavedValues();
+    this.getCurrencies();
+  }*/
+
+  sendDateToService() {
     this.selectedCurrencies = [];
     this.clearSavedValues();
     this.getCurrencies();

@@ -1,7 +1,7 @@
 import { ConverterService } from './../converter.service';
 import { Component, OnInit } from '@angular/core';
-import { Currency } from '../shared/currency';
-import { CurrencyResponse } from '../shared/currency-response';
+import { Currency } from '../models/ICurrency';
+import { CurrencyResponse } from '../models/ICurrencyResponse';
 
 @Component({
   selector: 'app-courses',
@@ -17,7 +17,7 @@ export class CoursesComponent implements OnInit {
   constructor(private converterService: ConverterService) {}
 
   getCurrencies() {
-    this.converterService.getCurrencies().subscribe((response: CurrencyResponse[]) => {
+    this.converterService.getCurrencies(this.dateValue).subscribe((response: CurrencyResponse[]) => {
       this.isDateOk = false;
       this.currenciesList = response.map(el => ({
         id: el.Cur_ID,
@@ -31,11 +31,6 @@ export class CoursesComponent implements OnInit {
         this.isDateOk = true;
       }
     });
-  }
-
-  sendDateToService() {
-    this.converterService.date = this.dateValue;
-    this.getCurrencies();
   }
 
   ngOnInit(): void {

@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-
+import { UrlService } from "./url.service";
+ 
 @Injectable({
   providedIn: 'root'
 })
 
 export class ConverterService {
 
-  constructor(private http: HttpClient) {
+  constructor (
+    private http: HttpClient,
+    private urlService: UrlService
+  ) {}
 
-  }
-
-  date: string;
-
-  getCurrencies() {
-    return this.http.get('https://www.nbrb.by/api/exrates/rates?ondate=' + this.date + '&periodicity=0');
+  getCurrencies(date: string) {
+    const url = 'https://www.nbrb.by/api/exrates/rates?ondate=' + date + '&periodicity=0';
+    return this.http.get(url);
   }
 
 }
