@@ -2,7 +2,6 @@ import { ConverterService } from './../converter.service';
 import { Component, OnInit } from '@angular/core';
 import { Currency } from '../models/ICurrency';
 import { CurrencyResponse } from '../models/ICurrency';
-import { UrlService } from '../url.service';
 
 @Component({
   selector: 'app-courses',

@@ -1,5 +1,4 @@
 import { ConverterService } from './../converter.service';
-import { UrlService } from './../url.service';
 import { Component, OnInit } from '@angular/core';
 import { Currency } from '../models/ICurrency';
 import { CurrencyResponse } from '../models/ICurrency';
@@ -14,7 +13,7 @@ import { SavedValues } from "../models/IStoredAppState";
 export class ConverterComponent implements OnInit {
 
   currenciesList: Currency[];
-  public dateValue: string;
+  dateValue: string;
   currency: string;
   inputValueInByn: number = 0;
   selectedCurrencies: Currency[] = [];

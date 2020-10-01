@@ -19,8 +19,8 @@ const appRoutes: Routes = [
     { path: '**', component: CoursesComponent }
 ]
 
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
@@ -43,7 +43,7 @@ export function HttpLoaderFactory(http: HttpClient) {
           useFactory: HttpLoaderFactory,
           deps: [HttpClient]
       },
-      defaultLanguage: 'ru'
+      useDefaultLang: false
   })
   ],
   providers: [],
