@@ -26,12 +26,9 @@ export class ConverterComponent implements OnInit {
     selectCurList: this.selectedCurrencies
   };
 
-  constructor(
-    private converterService: ConverterService,
-    private urlService: UrlService
-  ) {}
+  constructor(private converterService: ConverterService) {}
 
-  onChanged(date: string) {
+  onChangedDate(date: string) {
     this.dateValue = date;
     this.getCurrencies();
   }

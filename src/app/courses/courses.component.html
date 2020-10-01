@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <app-date (onChanged)="onChanged($event)"></app-date>
+    <app-date (onChanged)="onChangedDate($event)"></app-date>
     <div *ngIf="currenciesList; else loading">
         <div class="row" *ngFor="let cur of currenciesList">
             <span class="col-md-1 col-sm-3 col-xs-3">{{ cur.scale }}</span>

@@ -8,6 +8,8 @@ export class UrlService {
 
   constructor(private http: HttpClient) { }
 
-
+  getUrl(date: string) {
+    return ('https://www.nbrb.by/api/exrates/rates?ondate=' + date + '&periodicity=0');
+  }
 
 }

@@ -17,7 +17,7 @@ export class ConverterService {
   ) {}
 
   getCurrencies(date: string) {
-    const url = 'https://www.nbrb.by/api/exrates/rates?ondate=' + date + '&periodicity=0';
+    const url = this.urlService.getUrl(date);
     return this.http.get(url);
   }
 

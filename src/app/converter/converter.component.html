@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <app-date (onChanged)="onChanged($event)"></app-date>
+    <app-date (onChanged)="onChangedDate($event)"></app-date>
     <div *ngIf="currenciesList; else loading" class="main">
         <div class="converterMenu">
             <button (click)="addSelectedCurrencies()">{{ 'currency.add' | translate }}</button>
