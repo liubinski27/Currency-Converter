@@ -1,8 +1,5 @@
 <div class="container-fluid">
-    <div class="chooseDate">
-        <p class="m-3">{{ 'choose.date' | translate }}</p>
-        <input onkeypress="return false" [ngClass]="{ok: isDateOk}" type="date" [(ngModel)]="dateValue" (input)="getCurrencies()">
-    </div>
+    <app-date (onChanged)="onChanged($event)"></app-date>
     <div *ngIf="currenciesList; else loading">
         <div class="row" *ngFor="let cur of currenciesList">
             <span class="col-md-1 col-sm-3 col-xs-3">{{ cur.scale }}</span>

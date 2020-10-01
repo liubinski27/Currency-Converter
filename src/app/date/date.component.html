@@ -1,0 +1,4 @@
+<div class="chooseDate">
+    <p class="m-3">{{ 'choose.date' | translate }}</p>
+    <input onkeypress="return false" type="date" [(ngModel)]="date" (change)="sendDate()">
+</div>

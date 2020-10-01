@@ -11,6 +11,7 @@ import { ConverterComponent } from './converter/converter.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CoursesComponent } from './courses/courses.component';
+import { DateComponent } from './date/date.component';
 
 const appRoutes: Routes = [
     { path: '', component: CoursesComponent },
@@ -28,7 +29,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ConverterComponent,
     HeaderComponent,
     FooterComponent,
-    CoursesComponent
+    CoursesComponent,
+    DateComponent
   ],
   imports: [
     BrowserModule,

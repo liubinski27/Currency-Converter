@@ -2,8 +2,8 @@ import { ConverterService } from './../converter.service';
 import { UrlService } from './../url.service';
 import { Component, OnInit } from '@angular/core';
 import { Currency } from '../models/ICurrency';
-import { CurrencyResponse } from '../models/ICurrencyResponse';
-import { SavedValues } from "../models/ISavedValues";
+import { CurrencyResponse } from '../models/ICurrency';
+import { SavedValues } from "../models/IStoredAppState";
 
 @Component({
   selector: 'app-converter',
@@ -14,13 +14,12 @@ import { SavedValues } from "../models/ISavedValues";
 export class ConverterComponent implements OnInit {
 
   currenciesList: Currency[];
+  public dateValue: string;
   currency: string;
   inputValueInByn: number = 0;
   selectedCurrencies: Currency[] = [];
   savedCurIndex: number;
   savedCurValue: number;
-  dateValue: string;
-  isDateOk = false;
   isSelectDisable = false;
   savedData: SavedValues = {
     valueInByn: this.inputValueInByn,
@@ -32,10 +31,15 @@ export class ConverterComponent implements OnInit {
     private urlService: UrlService
   ) {}
 
+  onChanged(date: string) {
+    this.dateValue = date;
+    this.getCurrencies();
+  }
+
   getCurrencies() {
     this.converterService.getCurrencies(this.dateValue).subscribe((response: CurrencyResponse[]) => {
-      this.isDateOk = false;
-      this.isSelectDisable = true;
+      this.selectedCurrencies = [];
+      this.clearSavedValues();
       this.currenciesList = response.map(el => ({
         id: el.Cur_ID,
         date: el.Date,
@@ -46,8 +50,6 @@ export class ConverterComponent implements OnInit {
       }));
       if (this.currenciesList) {
         this.currency = this.currenciesList[0].abbr;
-        this.isDateOk = true;
-        this.isSelectDisable = false;
       }
     });
   }
@@ -104,12 +106,6 @@ export class ConverterComponent implements OnInit {
     this.clearSavedValues();
     this.getCurrencies();
   }*/
-
-  sendDateToService() {
-    this.selectedCurrencies = [];
-    this.clearSavedValues();
-    this.getCurrencies();
-  }
 
   clearSavedValues() {
     this.inputValueInByn = 0;

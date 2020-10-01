@@ -1,9 +1,5 @@
 <div class="container-fluid">
-    <div class="chooseDate">
-        <p class="m-3">{{ 'choose.date' | translate }}</p>
-        <input onkeypress="return false" [ngClass]="{ok: isDateOk}" type="date" [(ngModel)]="dateValue"
-            (input)="sendDateToService()">
-    </div>
+    <app-date (onChanged)="onChanged($event)"></app-date>
     <div *ngIf="currenciesList; else loading" class="main">
         <div class="converterMenu">
             <button (click)="addSelectedCurrencies()">{{ 'currency.add' | translate }}</button>
