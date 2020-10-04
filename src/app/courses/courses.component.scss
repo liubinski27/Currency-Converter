@@ -7,37 +7,15 @@
 
 .container-fluid {
 
-    .chooseDate {
-        input {
-            width: 200px;
-            height: 30px;
-            border: 2px solid red;
-            margin: 5px 15px 15px 15px;
-        }
-
-        .ok {
-            border: 2px solid green;
-        }
-    }
-
     .row {
         border: 1px solid silver;
         box-shadow: inset 1px;
-        display: flex;
         font-size: 20px;
-        padding: 5px 10px 5px 10px;
+        padding: 5px 10px;
         justify-content: space-between;
 
         span {
             text-align: center;
-        }
-
-        span:first-child {
-            text-align: right;
-        }
-
-        span:last-child {
-            text-align: left;
         }
 
         span:nth-child(even) {

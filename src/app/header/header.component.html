@@ -1,35 +1,31 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="logo col-sm-4 col-md-4 col-lg-5">
-            <h1>Convert</h1>
-        </div>
-        <nav class="navigation col-sm-7 col-md-7 col-lg-6">
-            <a routerLink="">{{ 'menu.currency.rates' | translate }}</a>
-            <a routerLink="/converter">{{ 'menu.currency.converter' | translate }}</a>
-        </nav>
-        <div class="dropdown col-sm-1 col-md-1 col-lg-1">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="true">
-                <img src="../../assets/styles/pictures/pngegg.png" alt="language">
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li (click)="changeLang('ru')">Русский</li>
-                <li (click)="changeLang('en')">English</li>
-            </ul>
-        </div>
-        <div class="menu-toggle">
-            <input id="menu__toggle" type="checkbox" />
-            <label class="menu__btn" for="menu__toggle">
-                <span></span>
-            </label>
-            <ul class="menu__box">
-                <li><a class="menu__item" routerLink="">{{ 'menu.currency.rates' | translate }}</a></li>
-                <li><a class="menu__item" routerLink="/converter">{{ 'menu.currency.converter' | translate }}</a></li>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">Converter</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="">{{ 'menu.currency.rates' | translate }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/converter">{{ 'menu.currency.converter' | translate }}</a>
+                </li>
                 <li>
-                    <p>Convert</p>
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <img src="../../assets/styles/pictures/pngegg.png" alt="language">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li (click)="changeLang('ru')">Русский</li>
+                        <li (click)="changeLang('en')">English</li>
+                    </ul>
                 </li>
             </ul>
         </div>
-    </div>
+    </nav>
 </div>

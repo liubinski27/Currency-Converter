@@ -3,8 +3,10 @@
     src: url("../assets/styles/fonts/roboto/Roboto-Medium.ttf");
 }
 
+$componentContainerColor: #FFFAE2;
+
 .container {
     font-family: "Roboto";
-    background-color: #FFFAE2;
+    background-color: $componentContainerColor;
     padding: 0;
 }

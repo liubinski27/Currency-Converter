@@ -2,23 +2,25 @@
     <app-date (onChanged)="onChangedDate($event)"></app-date>
     <div *ngIf="currenciesList; else loading" class="main">
         <div class="converterMenu">
-            <button (click)="addSelectedCurrencies()">{{ 'currency.add' | translate }}</button>
             <select class="form-control" name="currency" [(ngModel)]="currency" [disabled]="isSelectDisable">
                 <option *ngFor="let cur of currenciesList" [value]="cur.abbr" [disabled]="disableOption(cur.abbr)">
                     {{ cur.abbr }}
                 </option>
             </select>
+            <button class="btn btn-primary" (click)="addSelectedCurrencies()">{{ 'currency.add' | translate }}</button>
         </div>
         <div class="inputValue">
-            <input type="text" (input)="convertInputToByn($event.target.value, 1, 1, -1)"
+            <input class="form-control" type="text" (input)="convertInputToByn($event.target.value, 1, 1, -1)"
                 [value]="convertInputToCur(1, 1, -1)">
             <span>BYN</span>
+            <button class="btn btn-danger disabled">x</button>
         </div>
         <div class="inputValue" *ngFor="let selectedCur of selectedCurrencies; let i = index">
-            <input type="text" (input)="convertInputToByn($event.target.value, selectedCur.scale, selectedCur.rate, i)"
+            <input class="form-control" type="text"
+                (input)="convertInputToByn($event.target.value, selectedCur.scale, selectedCur.rate, i)"
                 [value]="convertInputToCur(selectedCur.scale, selectedCur.rate, i)">
             <span>{{ selectedCur.abbr }}</span>
-            <button (click)="deleteInput(selectedCur.abbr)">x</button>
+            <button class="btn btn-danger" (click)="deleteInput(selectedCur.abbr)">x</button>
         </div>
     </div>
     <ng-template #loading>

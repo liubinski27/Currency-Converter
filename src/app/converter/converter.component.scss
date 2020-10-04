@@ -1,4 +1,4 @@
-.container-fluid {
+/*.container-fluid {
 
     padding: 0;
 
@@ -91,5 +91,39 @@
     .loading {
         margin: 0px 0px 15px 15px;
         color: gray;
+    }
+}*/
+
+.container-fluid {
+    button.btn-primary,
+    input,
+    select {
+        width: 180px;
+        margin: 10px;
+    }
+
+    button.btn-danger {
+        margin: 10px;
+        width: 30px;
+        height: 30px;
+        padding: 0;
+
+        .glyphicon {
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    .converterMenu {
+        display: flex;
+        justify-content: flex-start;
+        flex-flow: row wrap;
+    }
+
+    .inputValue {
+        width: 300px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 }

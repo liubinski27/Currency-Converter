@@ -7,12 +7,10 @@ $footerContainerColor: #ffe773;
 }
 
 .container {
-
     background-color: $footerContainerColor;
-    padding: 0px 15px 0px 15px;
+    padding: 0px 15px;
 
     .footer {
-
         display: flex;
         justify-content: space-between;
 
@@ -23,13 +21,12 @@ $footerContainerColor: #ffe773;
         }
 
         .popularCourses {
-
             margin: 10px;
 
             ul {
                 li {
                     display: inline-block;
-                    margin: 0px 10px 0px 10px;
+                    margin: 0px 10px;
                     padding: 5px;
                     text-align: center;
                 }
