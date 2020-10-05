@@ -1,7 +1,6 @@
 import { ConverterService } from './../converter.service';
 import { Component, OnInit } from '@angular/core';
 import { Currency } from '../models/ICurrency';
-import { CurrencyResponse } from '../models/ICurrency';
 import { SavedValues } from "../models/IStoredAppState";
 
 @Component({

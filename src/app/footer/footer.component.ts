@@ -1,7 +1,6 @@
 import { ConverterService } from './../converter.service';
 import { Component, OnInit } from '@angular/core';
 import { Currency } from '../models/ICurrency';
-import { CurrencyResponse } from '../models/ICurrency';
 
 @Component({
   selector: 'app-footer',
@@ -10,7 +9,7 @@ import { CurrencyResponse } from '../models/ICurrency';
 })
 export class FooterComponent implements OnInit {
 
-  currenciesList: Currency[] = [];
+  currenciesList: Currency[];
   curListForFooter: Currency[] = [];
   curAbrForFooter = ['USD', 'EUR', 'RUB', 'PLN', 'UAH'];
 

@@ -6,7 +6,7 @@ $footerContainerColor: #ffe773;
     padding: 0;
 }
 
-.container {
+.container-fluid {
     background-color: $footerContainerColor;
     padding: 0px 15px;
 
@@ -33,8 +33,9 @@ $footerContainerColor: #ffe773;
             }
         }
     }
-}
 
-.loading {
-    margin: 10px;
+    .loading {
+        margin: 10px;
+        color: gray;
+    }
 }

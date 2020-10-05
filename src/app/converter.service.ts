@@ -11,7 +11,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 
 export class ConverterService {
 
-  currenciesList: Currency[];
+  currenciesList: Currency[] = [];
 
   constructor (
     private http: HttpClient,
@@ -32,7 +32,6 @@ export class ConverterService {
         rate: el.Cur_OfficialRate
       }));
       subject.next(this.currenciesList);
-      subject.complete;
     })
     return subject;
   }

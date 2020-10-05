@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container-fluid">
     <div class="footer">
         <div class="logo">
-            <p i18n="footerCourses">{{ 'footer.title' | translate }}</p>
+            <p>{{ 'footer.title' | translate }}</p>
         </div>
         <div *ngIf="currenciesList.length > 1; else error" class="popularCourses">
             <ul>
