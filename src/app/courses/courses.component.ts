@@ -11,30 +11,17 @@ import { CurrencyResponse } from '../models/ICurrency';
 export class CoursesComponent implements OnInit {
 
   currenciesList: Currency[];
-  dateValue: string;
 
   constructor(private converterService: ConverterService) {}
 
-  onChangedDate(date: string) {
-    this.dateValue = date;
-    this.getCurrencies();
-  }
-
-  getCurrencies() {
-    this.converterService.getCurrencies(this.dateValue).subscribe((response: CurrencyResponse[]) => {
-      this.currenciesList = response.map(el => ({
-        id: el.Cur_ID,
-        date: el.Date,
-        abbr: el.Cur_Abbreviation,
-        scale: el.Cur_Scale,
-        name: el.Cur_Name,
-        rate: el.Cur_OfficialRate
-      }));
+  getCurrencies(date: string) {
+    this.converterService.getCurrencies(date).subscribe((response: Currency[]) => {
+      this.currenciesList = response;
     });
   }
 
   ngOnInit(): void {
-    this.getCurrencies();
+    this.getCurrencies('');
   }
 
 }

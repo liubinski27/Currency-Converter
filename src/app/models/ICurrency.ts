@@ -4,6 +4,7 @@ export interface CurrencyResponse {
     Cur_Abbreviation: string,
     Cur_Scale: number,
     Cur_Name: string,
+    Cur_Name_Eng: string,
     Cur_OfficialRate: number,
 }
 
@@ -12,6 +13,7 @@ export interface Currency {
     date: Date,
     abbr: string,
     scale: number,
-    name: string,
+    name_ru: string,
+    name_en: string,
     rate: number
 }

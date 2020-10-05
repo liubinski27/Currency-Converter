@@ -16,16 +16,9 @@ export class FooterComponent implements OnInit {
 
   constructor(private converterService: ConverterService) { }
 
-  getCurrencies() {
-    this.converterService.getCurrencies('').subscribe((response: CurrencyResponse[]) => {
-      this.currenciesList = response.map(el => ({
-        id: el.Cur_ID,
-        date: el.Date,
-        abbr: el.Cur_Abbreviation,
-        scale: el.Cur_Scale,
-        name: el.Cur_Name,
-        rate: el.Cur_OfficialRate
-      }));
+  getCurrencies(date: string) {
+    this.converterService.getCurrencies(date).subscribe((response: Currency[]) => {
+      this.currenciesList = response;
       this.addCursInFooter();
     });
   }
@@ -45,7 +38,7 @@ export class FooterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCurrencies();
+    this.getCurrencies('');
   }
 
 }

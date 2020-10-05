@@ -13,7 +13,6 @@ import { SavedValues } from "../models/IStoredAppState";
 export class ConverterComponent implements OnInit {
 
   currenciesList: Currency[];
-  dateValue: string;
   currency: string;
   inputValueInByn: number = 0;
   selectedCurrencies: Currency[] = [];
@@ -27,23 +26,11 @@ export class ConverterComponent implements OnInit {
 
   constructor(private converterService: ConverterService) {}
 
-  onChangedDate(date: string) {
-    this.dateValue = date;
-    this.getCurrencies();
-  }
-
-  getCurrencies() {
-    this.converterService.getCurrencies(this.dateValue).subscribe((response: CurrencyResponse[]) => {
+  getCurrencies(date: string) {
+    this.converterService.getCurrencies(date).subscribe((response: Currency[]) => {
       this.selectedCurrencies = [];
       this.clearSavedValues();
-      this.currenciesList = response.map(el => ({
-        id: el.Cur_ID,
-        date: el.Date,
-        abbr: el.Cur_Abbreviation,
-        scale: el.Cur_Scale,
-        name: el.Cur_Name,
-        rate: el.Cur_OfficialRate
-      }));
+      this.currenciesList = response;
       if (this.currenciesList) {
         this.currency = this.currenciesList[0].abbr;
       }
@@ -96,13 +83,6 @@ export class ConverterComponent implements OnInit {
     }
   }
 
-  /*sendDateToService() {
-    this.converterService.date = this.dateValue;
-    this.selectedCurrencies = [];
-    this.clearSavedValues();
-    this.getCurrencies();
-  }*/
-
   clearSavedValues() {
     this.inputValueInByn = 0;
     this.savedCurValue = 0;
@@ -130,7 +110,7 @@ export class ConverterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCurrencies();
+    this.getCurrencies('');
     this.getSavedData();
   }
 
