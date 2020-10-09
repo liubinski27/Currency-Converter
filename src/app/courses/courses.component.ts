@@ -1,26 +1,28 @@
 import { ConverterService } from './../converter.service';
 import { Component, OnInit } from '@angular/core';
-import { Currency } from '../models/ICurrency';
+import { ICurrency } from '../models/currency';
 
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.scss']
 })
+
 export class CoursesComponent implements OnInit {
 
-  currenciesList: Currency[];
+  currenciesList: ICurrency[];
 
-  constructor(private converterService: ConverterService) {}
+  constructor(
+    private converterService: ConverterService
+  ) { }
 
-  getCurrencies(date: string) {
-    this.converterService.getCurrencies(date).subscribe((response: Currency[]) => {
+  getCurrencies(date: string = '') {
+    this.converterService.getCurrencies(date).subscribe((response: ICurrency[]) => {
       this.currenciesList = response;
     });
   }
 
   ngOnInit(): void {
-    this.getCurrencies('');
+    this.getCurrencies();
   }
-
 }

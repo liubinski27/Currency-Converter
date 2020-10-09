@@ -14,16 +14,18 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/converter">{{ 'menu.currency.converter' | translate }}</a>
                 </li>
-                <li>
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <img src="../../assets/styles/pictures/pngegg.png" alt="language">
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li (click)="changeLang('ru')">Русский</li>
-                        <li (click)="changeLang('en')">English</li>
-                    </ul>
+                <li class="nav-item">
+                    <div class="changeLang">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <img src="../../assets/styles/pictures/pngegg.png" alt="language">
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li (click)="changeLang('ru')">RU</li>
+                            <li (click)="changeLang('en')">EN</li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
         </div>

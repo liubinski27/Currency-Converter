@@ -1,24 +1,29 @@
 import { ConverterService } from './../converter.service';
 import { Component, OnInit } from '@angular/core';
-import { Currency } from '../models/ICurrency';
+import { ICurrency } from '../models/currency';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
+
 export class FooterComponent implements OnInit {
 
-  currenciesList: Currency[];
-  curListForFooter: Currency[] = [];
+  currenciesList: ICurrency[];
+  curListForFooter: ICurrency[] = [];
   curAbrForFooter = ['USD', 'EUR', 'RUB', 'PLN', 'UAH'];
 
-  constructor(private converterService: ConverterService) { }
+  constructor(
+    private converterService: ConverterService
+  ) { }
 
-  getCurrencies(date: string) {
-    this.converterService.getCurrencies(date).subscribe((response: Currency[]) => {
+  getCurrencies(date: string = '') {
+    this.converterService.getCurrencies(date).subscribe((response: ICurrency[]) => {
       this.currenciesList = response;
-      this.addCursInFooter();
+      if (this.currenciesList) {
+        this.addCursInFooter();
+      }
     });
   }
 
@@ -37,7 +42,6 @@ export class FooterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCurrencies('');
+    this.getCurrencies();
   }
-
 }

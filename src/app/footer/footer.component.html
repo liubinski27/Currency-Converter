@@ -3,7 +3,7 @@
         <div class="logo">
             <p>{{ 'footer.title' | translate }}</p>
         </div>
-        <div *ngIf="currenciesList.length > 1; else error" class="popularCourses">
+        <div *ngIf="currenciesList; else error" class="popularCourses">
             <ul>
                 <li *ngFor="let cur of curListForFooter">
                     <p>{{ cur.abbr }}</p>

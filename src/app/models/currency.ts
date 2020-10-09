@@ -1,4 +1,4 @@
-export interface CurrencyResponse {
+export interface ICurrencyResponse {
     Cur_ID: number,
     Date: Date,
     Cur_Abbreviation: string,
@@ -8,7 +8,7 @@ export interface CurrencyResponse {
     Cur_OfficialRate: number,
 }
 
-export interface Currency {
+export interface ICurrency {
     id: number,
     date: Date,
     abbr: string,

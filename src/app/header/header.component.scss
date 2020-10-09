@@ -28,17 +28,18 @@ $headerAColor: #000000;
         .nav-item {
             font-size: 20px;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
         }
 
         .dropdown-menu {
+            background: $componentContainerColor;
             position: inherit;
-            min-width: 100px;
             text-align: center;
+            font-size: 13px;
+            min-width: 40px;
 
             li {
                 border: 1px solid gray;
-                background: $componentContainerColor;
             }
 
             li:hover {
@@ -52,5 +53,16 @@ $headerAColor: #000000;
 @media (min-width: 992px) {
     .navbar-nav {
         margin-left: 300px;
+    }
+
+    .nav-item {
+        height: 30px;
+    }
+}
+
+@media (max-width: 991px) {
+    .nav-item {
+        height: 100%;
+        flex-direction: column;
     }
 }
