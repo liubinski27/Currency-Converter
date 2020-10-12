@@ -11,12 +11,12 @@ import { ICurrency } from '../models/currency';
 export class ConverterComponent implements OnInit {
 
   currenciesList: ICurrency[];
+  selectedCurAbbrList = [];
   currency: string;
   inputValueInByn: number = 0;
   selectedCurrencies: ICurrency[] = [];
   savedCurIndex: number;
   savedCurValue: number;
-  isSelectDisable = false;
 
   constructor(
     private converterService: ConverterService
@@ -27,12 +27,13 @@ export class ConverterComponent implements OnInit {
       this.currenciesList = response;
       if (this.currenciesList) {
         this.currency = this.currenciesList[0].abbr;
+        this.getSavedData();
       }
     });
   }
 
   addSelectedCurrencies() {
-    const selectedCurrency = this.selectedCurrencies.find(item => this.findCur(item, this.currency)); // в отдельную ф-ию
+    const selectedCurrency = this.selectedCurrencies.find(item => this.findCur(item, this.currency));
     if (!selectedCurrency) {
       const currencyInList = this.currenciesList.find(item => this.findCur(item, this.currency));
       if (currencyInList) {
@@ -43,9 +44,9 @@ export class ConverterComponent implements OnInit {
   }
 
   deleteInput(selectedCur: string) {
-    const curForDel = this.selectedCurrencies.findIndex(item => this.findCur(item, selectedCur));
-    if (curForDel >= 0) {
-      this.selectedCurrencies.splice(curForDel, 1);
+    const index = this.selectedCurrencies.findIndex(item => this.findCur(item, selectedCur));
+    if (index >= 0) {
+      this.selectedCurrencies.splice(index, 1);
     }
     if (!this.selectedCurrencies.length) {
       this.inputValueInByn = 0;
@@ -60,7 +61,7 @@ export class ConverterComponent implements OnInit {
   }
 
   disableOption(selectedCur: string) {
-    return this.selectedCurrencies.find(item => this.findCur(item, selectedCur)); // отдельная ф-ия
+    return this.selectedCurrencies.find(item => this.findCur(item, selectedCur));
   }
 
   convertInputToByn(curValue, curScale, curRate, i) {
@@ -80,25 +81,34 @@ export class ConverterComponent implements OnInit {
   }
 
   saveData() {
-    sessionStorage.setItem('valueInByn', JSON.stringify(this.inputValueInByn));
-    sessionStorage.setItem('selectedCurs', JSON.stringify(this.selectedCurrencies));
+    this.selectedCurrencies.forEach(item => {
+      const savedAbbr = this.selectedCurAbbrList.find(el => el === item.abbr);
+      if (!savedAbbr) {
+        this.selectedCurAbbrList.push(item.abbr);
+      }
+    })
+    sessionStorage.setItem('selectedCurs', JSON.stringify(this.selectedCurAbbrList));
   }
 
   getSavedData() {
-    const savedValueInByn = sessionStorage.getItem('valueInByn');
-    if (savedValueInByn) {
-      const parsedSavedByn = JSON.parse(savedValueInByn);
-      this.inputValueInByn = parsedSavedByn;
-    }
+    this.selectedCurrencies = [];
     const savedCurs = sessionStorage.getItem('selectedCurs');
     if (savedCurs) {
       const parsedSavedCurs = JSON.parse(savedCurs);
-      this.selectedCurrencies = parsedSavedCurs;
+      this.selectedCurAbbrList = parsedSavedCurs;
+      this.selectedCurAbbrList.forEach(savedCur => {
+        const currencyInList = this.currenciesList.find(item => item.abbr === savedCur);
+        if (currencyInList) {
+          const selectedCurrency = this.selectedCurrencies.find(item => item === currencyInList);
+          if (!selectedCurrency) {
+            this.selectedCurrencies.push(currencyInList);
+          }
+        }
+      })
     }
   }
 
   ngOnInit(): void {
     this.getCurrencies();
-    this.getSavedData();
   }
 }

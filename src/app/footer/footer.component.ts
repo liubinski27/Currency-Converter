@@ -12,7 +12,7 @@ export class FooterComponent implements OnInit {
 
   currenciesList: ICurrency[];
   curListForFooter: ICurrency[] = [];
-  curAbrForFooter = ['USD', 'EUR', 'RUB', 'PLN', 'UAH'];
+  curAbrForFooter = ['USD', 'EUR', 'RUB', 'PLN', 'UAH', 'AUD'];
 
   constructor(
     private converterService: ConverterService

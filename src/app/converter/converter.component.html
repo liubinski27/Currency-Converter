@@ -1,8 +1,8 @@
 <div class="container-fluid">
     <app-date (onChanged)="getCurrencies($event)"></app-date>
-    <div *ngIf="currenciesList; else loading" class="main">
+    <div *ngIf="currenciesList; else loading">
         <div class="converterMenu">
-            <select class="form-control" name="currency" [(ngModel)]="currency" [disabled]="isSelectDisable">
+            <select class="form-control" name="currency" [(ngModel)]="currency">
                 <option *ngFor="let cur of currenciesList" [value]="cur.abbr" [disabled]="disableOption(cur.abbr)">
                     {{ cur.abbr }}
                 </option>
