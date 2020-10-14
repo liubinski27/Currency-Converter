@@ -1,9 +1,21 @@
+$btnPrimaryColor: rgb(255, 232, 117);
+
 .container-fluid {
     button.btn-primary,
     input,
     select {
         width: 180px;
         margin: 10px;
+    }
+
+    button.btn-primary {
+        background: $btnPrimaryColor;
+        border: 1px solid gray;
+        color: black;
+    }
+
+    button.btn-primary:hover {
+        background: rgba(255, 215, 105, 1);
     }
 
     button.btn-danger {

@@ -35,11 +35,10 @@ $headerAColor: #000000;
             background: $componentContainerColor;
             position: inherit;
             text-align: center;
-            font-size: 13px;
-            min-width: 40px;
 
             li {
                 border: 1px solid gray;
+                line-height: 30px;
             }
 
             li:hover {
@@ -58,11 +57,19 @@ $headerAColor: #000000;
     .nav-item {
         height: 30px;
     }
+
+    .dropdown-menu {
+        min-width: 120px;
+    }
 }
 
 @media (max-width: 991px) {
     .nav-item {
         height: 100%;
         flex-direction: column;
+    }
+
+    .dropdown-menu {
+        min-width: 170px;
     }
 }

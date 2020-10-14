@@ -11,12 +11,12 @@ import { ICurrency } from '../models/currency';
 export class ConverterComponent implements OnInit {
 
   currenciesList: ICurrency[];
-  selectedCurAbbrList = [];
-  currency: string;
-  inputValueInByn: number = 0;
+  selectedCurrenciesAbbreviations = [];
+  selectedCurrencyAbbreviation: string;
+  convertedInputValueInByn: number = 0;
   selectedCurrencies: ICurrency[] = [];
-  savedCurIndex: number;
-  savedCurValue: number;
+  savedCurrencyIndex: number;
+  savedCurrencyValue: number;
 
   constructor(
     private converterService: ConverterService
@@ -26,82 +26,82 @@ export class ConverterComponent implements OnInit {
     this.converterService.getCurrencies(date).subscribe((response: ICurrency[]) => {
       this.currenciesList = response;
       if (this.currenciesList) {
-        this.currency = this.currenciesList[0].abbr;
+        this.selectedCurrencyAbbreviation = this.currenciesList[0].abbr;
         this.getSavedData();
       }
     });
   }
 
   addSelectedCurrencies() {
-    const selectedCurrency = this.selectedCurrencies.find(item => this.findCur(item, this.currency));
-    if (!selectedCurrency) {
-      const currencyInList = this.currenciesList.find(item => this.findCur(item, this.currency));
-      if (currencyInList) {
-        this.selectedCurrencies.push(currencyInList);
+    const foundCurrencyInSelectedCurrencies = this.findCurrency(this.selectedCurrencies, this.selectedCurrencyAbbreviation);
+    if (!foundCurrencyInSelectedCurrencies) {
+      const foundCurrencyInCurrenciesList = this.findCurrency(this.currenciesList, this.selectedCurrencyAbbreviation);
+      if (foundCurrencyInCurrenciesList) {
+        this.selectedCurrencies.push(foundCurrencyInCurrenciesList);
       }
     }
     this.saveData();
   }
 
-  deleteInput(selectedCur: string) {
-    const index = this.selectedCurrencies.findIndex(item => this.findCur(item, selectedCur));
-    if (index >= 0) {
-      this.selectedCurrencies.splice(index, 1);
+  findCurrency(array: ICurrency[], currency: string) {
+    return array.find(item => item.abbr === currency);
+  }
+
+  deleteInput(selectedCurrencyAbbreviation: string) {
+    const indexOfSelectedCurrency = this.selectedCurrencies.findIndex(item => item.abbr === selectedCurrencyAbbreviation);
+    if (indexOfSelectedCurrency >= 0) {
+      this.selectedCurrencies.splice(indexOfSelectedCurrency, 1);
     }
     if (!this.selectedCurrencies.length) {
-      this.inputValueInByn = 0;
-      this.savedCurValue = 0;
-      this.savedCurIndex = 0;
+      this.convertedInputValueInByn = 0;
+      this.savedCurrencyValue = 0;
+      this.savedCurrencyIndex = 0;
     }
     this.saveData();
   }
 
-  findCur(item, currency) {
-    return item.abbr === currency;
+  disableOption(selectedCurrencyAbbreviation: string) {
+    return this.findCurrency(this.selectedCurrencies, selectedCurrencyAbbreviation);
   }
 
-  disableOption(selectedCur: string) {
-    return this.selectedCurrencies.find(item => this.findCur(item, selectedCur));
-  }
-
-  convertInputToByn(curValue, curScale, curRate, i) {
-    this.inputValueInByn = curValue / curScale * curRate;
+  convertInputToByn(currencyValue, currencyScale, currencyRate, index) {
+    this.convertedInputValueInByn = currencyValue / currencyScale * currencyRate;
     this.saveData();
-    this.savedCurIndex = i;
-    this.savedCurValue = curValue;
+    this.savedCurrencyIndex = index;
+    this.savedCurrencyValue = currencyValue;
   }
 
-  convertInputToCur(curScale, curRate, i) {
-    if (i === this.savedCurIndex) {
-      return this.savedCurValue;
+  convertInputToCurrency(currencyScale, currencyRate, index) {
+    if (index === this.savedCurrencyIndex) {
+      return this.savedCurrencyValue;
     } else {
-      const value = this.inputValueInByn * curScale / curRate;
+      const value = this.convertedInputValueInByn * currencyScale / currencyRate;
       return Number.isInteger(value) ? value : value.toFixed(4);
     }
   }
 
   saveData() {
+    this.selectedCurrenciesAbbreviations = [];
     this.selectedCurrencies.forEach(item => {
-      const savedAbbr = this.selectedCurAbbrList.find(el => el === item.abbr);
-      if (!savedAbbr) {
-        this.selectedCurAbbrList.push(item.abbr);
+      const foundCurrencyAbbreviation = this.selectedCurrenciesAbbreviations.find(el => el === item.abbr);
+      if (!foundCurrencyAbbreviation) {
+        this.selectedCurrenciesAbbreviations.push(item.abbr);
       }
-    })
-    sessionStorage.setItem('selectedCurs', JSON.stringify(this.selectedCurAbbrList));
+    });
+    sessionStorage.setItem('selectedCurs', JSON.stringify(this.selectedCurrenciesAbbreviations));
   }
 
   getSavedData() {
     this.selectedCurrencies = [];
-    const savedCurs = sessionStorage.getItem('selectedCurs');
-    if (savedCurs) {
-      const parsedSavedCurs = JSON.parse(savedCurs);
-      this.selectedCurAbbrList = parsedSavedCurs;
-      this.selectedCurAbbrList.forEach(savedCur => {
-        const currencyInList = this.currenciesList.find(item => item.abbr === savedCur);
-        if (currencyInList) {
-          const selectedCurrency = this.selectedCurrencies.find(item => item === currencyInList);
-          if (!selectedCurrency) {
-            this.selectedCurrencies.push(currencyInList);
+    const savedCurrenciesAbbreviations = sessionStorage.getItem('selectedCurs');
+    if (savedCurrenciesAbbreviations) {
+      this.selectedCurrenciesAbbreviations = JSON.parse(savedCurrenciesAbbreviations);
+      this.selectedCurrenciesAbbreviations.forEach(savedCur => {
+        const foundCurrencyInCurrenciesList = this.findCurrency(this.currenciesList, savedCur);
+        if (foundCurrencyInCurrenciesList) {
+          const foundSelectedCurrency = this.selectedCurrencies.find(item => item === foundCurrencyInCurrenciesList);
+          if (!foundSelectedCurrency) {
+            this.selectedCurrencies.push(foundCurrencyInCurrenciesList);
           }
         }
       })

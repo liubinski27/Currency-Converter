@@ -2,25 +2,25 @@
     <app-date (onChanged)="getCurrencies($event)"></app-date>
     <div *ngIf="currenciesList; else loading">
         <div class="converterMenu">
-            <select class="form-control" name="currency" [(ngModel)]="currency">
-                <option *ngFor="let cur of currenciesList" [value]="cur.abbr" [disabled]="disableOption(cur.abbr)">
-                    {{ cur.abbr }}
+            <select class="form-control" name="currency" [(ngModel)]="selectedCurrencyAbbreviation">
+                <option *ngFor="let currency of currenciesList" [value]="currency.abbr" [disabled]="disableOption(currency.abbr)">
+                    {{ currency.abbr }}
                 </option>
             </select>
             <button class="btn btn-primary" (click)="addSelectedCurrencies()">{{ 'currency.add' | translate }}</button>
         </div>
         <div class="inputValue">
             <input class="form-control" type="text" (input)="convertInputToByn($event.target.value, 1, 1, -1)"
-                [value]="convertInputToCur(1, 1, -1)">
+                [value]="convertInputToCurrency(1, 1, -1)">
             <span>BYN</span>
             <button class="btn btn-danger disabled">x</button>
         </div>
-        <div class="inputValue" *ngFor="let selectedCur of selectedCurrencies; let i = index">
+        <div class="inputValue" *ngFor="let selectedCurrency of selectedCurrencies; let i = index">
             <input class="form-control" type="text"
-                (input)="convertInputToByn($event.target.value, selectedCur.scale, selectedCur.rate, i)"
-                [value]="convertInputToCur(selectedCur.scale, selectedCur.rate, i)">
-            <span>{{ selectedCur.abbr }}</span>
-            <button class="btn btn-danger" (click)="deleteInput(selectedCur.abbr)">x</button>
+                (input)="convertInputToByn($event.target.value, selectedCurrency.scale, selectedCurrency.rate, i)"
+                [value]="convertInputToCurrency(selectedCurrency.scale, selectedCurrency.rate, i)">
+            <span>{{ selectedCurrency.abbr }}</span>
+            <button class="btn btn-danger" (click)="deleteInput(selectedCurrency.abbr)">x</button>
         </div>
     </div>
     <ng-template #loading>
