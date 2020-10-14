@@ -5,9 +5,9 @@
         </div>
         <div *ngIf="currenciesList; else error" class="popularCourses">
             <ul>
-                <li *ngFor="let cur of curListForFooter">
-                    <p>{{ cur.abbr }}</p>
-                    <p>{{ calcRatesValue(cur.scale, cur.rate) }}</p>
+                <li *ngFor="let currency of selectedCurrencies">
+                    <p>{{ currency.abbreviation }}</p>
+                    <p>{{ calculateRatesValue(currency.scale, currency.rate) }}</p>
                 </li>
             </ul>
         </div>

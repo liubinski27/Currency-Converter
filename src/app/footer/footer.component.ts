@@ -11,8 +11,8 @@ import { ICurrency } from '../models/currency';
 export class FooterComponent implements OnInit {
 
   currenciesList: ICurrency[];
-  curListForFooter: ICurrency[] = [];
-  curAbrForFooter = ['USD', 'EUR', 'RUB', 'PLN', 'UAH', 'AUD'];
+  selectedCurrencies: ICurrency[] = [];
+  selectedCurrenciesAbbreviations = ['USD', 'EUR', 'RUB', 'PLN', 'UAH', 'AUD'];
 
   constructor(
     private converterService: ConverterService
@@ -22,22 +22,22 @@ export class FooterComponent implements OnInit {
     this.converterService.getCurrencies(date).subscribe((response: ICurrency[]) => {
       this.currenciesList = response;
       if (this.currenciesList) {
-        this.addCursInFooter();
+        this.addCurrenciesInFooter();
       }
     });
   }
 
-  addCursInFooter() {
-    this.curAbrForFooter.forEach(elem => {
-      const foundCur = this.currenciesList.find(item => item.abbr === elem);
-      if (foundCur) {
-        this.curListForFooter.push(foundCur);
+  addCurrenciesInFooter() {
+    this.selectedCurrenciesAbbreviations.forEach(item => {
+      const foundCurrencyInCurrenciesList = this.converterService.findCurrency(this.currenciesList, item);
+      if (foundCurrencyInCurrenciesList) {
+        this.selectedCurrencies.push(foundCurrencyInCurrenciesList);
       }
     });
   }
 
-  calcRatesValue(curScale, curRate) {
-    const value = curRate / curScale;
+  calculateRatesValue(currencyScale: number, currencyRate: number) {
+    const value = currencyRate / currencyScale;
     return value.toFixed(4);
   }
 

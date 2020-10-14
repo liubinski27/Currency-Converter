@@ -3,8 +3,9 @@
     <div *ngIf="currenciesList; else loading">
         <div class="converterMenu">
             <select class="form-control" name="currency" [(ngModel)]="selectedCurrencyAbbreviation">
-                <option *ngFor="let currency of currenciesList" [value]="currency.abbr" [disabled]="disableOption(currency.abbr)">
-                    {{ currency.abbr }}
+                <option *ngFor="let currency of currenciesList" [value]="currency.abbreviation"
+                    [disabled]="disableOption(currency.abbreviation)">
+                    {{ currency.abbreviation }}
                 </option>
             </select>
             <button class="btn btn-primary" (click)="addSelectedCurrencies()">{{ 'currency.add' | translate }}</button>
@@ -19,8 +20,8 @@
             <input class="form-control" type="text"
                 (input)="convertInputToByn($event.target.value, selectedCurrency.scale, selectedCurrency.rate, i)"
                 [value]="convertInputToCurrency(selectedCurrency.scale, selectedCurrency.rate, i)">
-            <span>{{ selectedCurrency.abbr }}</span>
-            <button class="btn btn-danger" (click)="deleteInput(selectedCurrency.abbr)">x</button>
+            <span>{{ selectedCurrency.abbreviation }}</span>
+            <button class="btn btn-danger" (click)="deleteInput(selectedCurrency.abbreviation)">x</button>
         </div>
     </div>
     <ng-template #loading>

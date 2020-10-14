@@ -12,6 +12,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CoursesComponent } from './courses/courses.component';
 import { DateComponent } from './date/date.component';
+import { ConverterService } from './converter.service';
+import { UrlService } from './url.service';
 
 const appRoutes: Routes = [
     { path: '', component: CoursesComponent },
@@ -46,7 +48,10 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
       useDefaultLang: false
   })
   ],
-  providers: [],
+  providers: [
+    ConverterService,
+    UrlService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

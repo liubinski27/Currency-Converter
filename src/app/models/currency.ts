@@ -4,16 +4,14 @@ export interface ICurrencyResponse {
     Cur_Abbreviation: string,
     Cur_Scale: number,
     Cur_Name: string,
-    Cur_Name_Eng: string,
     Cur_OfficialRate: number,
 }
 
 export interface ICurrency {
     id: number,
     date: Date,
-    abbr: string,
+    abbreviation: string,
     scale: number,
-    name_ru: string,
-    name_en: string,
+    name: string,
     rate: number
 }
