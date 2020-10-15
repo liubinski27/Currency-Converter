@@ -54,4 +54,5 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

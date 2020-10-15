@@ -19,11 +19,14 @@
     "@angular/platform-browser": "~10.0.3",
     "@angular/platform-browser-dynamic": "~10.0.3",
     "@angular/router": "~10.0.3",
+<<<<<<< HEAD
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
     "bootstrap": "^5.0.0-alpha2",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
+=======
+>>>>>>> a5e6da6052276138a27f198e3e23f59a70ec730c
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
@@ -32,10 +35,16 @@
     "@angular-devkit/build-angular": "~0.1000.2",
     "@angular/cli": "~10.0.2",
     "@angular/compiler-cli": "~10.0.3",
+<<<<<<< HEAD
     "@angular/localize": "^10.0.4",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
+=======
+    "@types/node": "^12.11.1",
+    "@types/jasmine": "~3.5.0",
+    "@types/jasminewd2": "~2.0.3",
+>>>>>>> a5e6da6052276138a27f198e3e23f59a70ec730c
     "codelyzer": "^6.0.0",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~5.0.0",
@@ -49,4 +58,8 @@
     "tslint": "~6.1.0",
     "typescript": "~3.9.5"
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> a5e6da6052276138a27f198e3e23f59a70ec730c
