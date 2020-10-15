@@ -22,17 +22,13 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-<<<<<<< HEAD
             "localize": true,
-=======
->>>>>>> a5e6da6052276138a27f198e3e23f59a70ec730c
             "aot": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-<<<<<<< HEAD
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.scss"
             ],
@@ -41,11 +37,6 @@
               "node_modules/popper.js/dist/umd/popper.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
-=======
-              "src/styles.scss"
-            ],
-            "scripts": []
->>>>>>> a5e6da6052276138a27f198e3e23f59a70ec730c
           },
           "configurations": {
             "production": {
@@ -91,13 +82,10 @@
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
-<<<<<<< HEAD
           "sourceLocale": "en-US",
           "locales": {
             "en": "src/locale/messages.en.xlf"
           },
-=======
->>>>>>> a5e6da6052276138a27f198e3e23f59a70ec730c
           "options": {
             "browserTarget": "Currency-Converter:build"
           }
@@ -145,13 +133,7 @@
           }
         }
       }
-<<<<<<< HEAD
     }
   },
   "defaultProject": "Currency-Converter"
 }
-=======
-    }},
-  "defaultProject": "Currency-Converter"
-}
->>>>>>> a5e6da6052276138a27f198e3e23f59a70ec730c
