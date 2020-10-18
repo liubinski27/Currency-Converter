@@ -5,7 +5,10 @@ import { ICurrency } from '../models/currency';
 @Component({
   selector: 'app-converter',
   templateUrl: './converter.component.html',
-  styleUrls: ['./converter.component.scss']
+  styleUrls: [
+    './converter.component.scss',
+    '../../assets/styles/scss/common.scss'
+  ]
 })
 
 export class ConverterComponent implements OnInit {
@@ -79,24 +82,24 @@ export class ConverterComponent implements OnInit {
   saveData() {
     this.selectedCurrenciesAbbreviations = [];
     this.selectedCurrencies.forEach(item => {
-      const foundCurrencyAbbreviation = this.selectedCurrenciesAbbreviations.find(el => el === item.abbreviation);
-      if (!foundCurrencyAbbreviation) {
+      const CurrencyAbbreviation = this.selectedCurrenciesAbbreviations.find(el => el === item.abbreviation);
+      if (!CurrencyAbbreviation) {
         this.selectedCurrenciesAbbreviations.push(item.abbreviation);
       }
     });
-    sessionStorage.setItem('selectedCurs', JSON.stringify(this.selectedCurrenciesAbbreviations));
+    sessionStorage.setItem('selectedCurrencies', JSON.stringify(this.selectedCurrenciesAbbreviations));
   }
 
   getSavedData() {
     this.selectedCurrencies = [];
-    const savedCurrenciesAbbreviations = sessionStorage.getItem('selectedCurs');
+    const savedCurrenciesAbbreviations = sessionStorage.getItem('selectedCurrencies');
     if (savedCurrenciesAbbreviations) {
       this.selectedCurrenciesAbbreviations = JSON.parse(savedCurrenciesAbbreviations);
       this.selectedCurrenciesAbbreviations.forEach(item => {
         const foundCurrencyInCurrenciesList = this.converterService.findCurrency(this.currenciesList, item);
         if (foundCurrencyInCurrenciesList) {
-          const foundSelectedCurrency = this.selectedCurrencies.find(item => item === foundCurrencyInCurrenciesList);
-          if (!foundSelectedCurrency) {
+          const SelectedCurrency = this.selectedCurrencies.find(item => item === foundCurrencyInCurrenciesList);
+          if (!SelectedCurrency) {
             this.selectedCurrencies.push(foundCurrencyInCurrenciesList);
           }
         }

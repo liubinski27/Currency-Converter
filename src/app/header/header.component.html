@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="">{{ 'menu.currency.rates' | translate }}</a>
+                    <a class="nav-link" routerLink="/courses">{{ 'menu.currency.rates' | translate }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/converter">{{ 'menu.currency.converter' | translate }}</a>
@@ -18,12 +18,12 @@
                     <div class="changeLang">
                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            <img src="../../assets/styles/pictures/pngegg.png" alt="language">
+                            <img src="../../assets/styles/pictures/languageSelectionIcon.png" alt="language">
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li (click)="changeLang('ru')">Русский</li>
-                            <li (click)="changeLang('en')">English</li>
+                            <li (click)="changeLang(eLanguagesList.russian)">Русский</li>
+                            <li (click)="changeLang(eLanguagesList.english)">English</li>
                         </ul>
                     </div>
                 </li>

@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <app-date (onChanged)="getCurrencies($event)"></app-date>
+    <app-date (onChange)="getCurrencies($event)"></app-date>
     <div *ngIf="currenciesList; else loading">
         <div class="converterMenu">
             <select class="form-control" name="currency" [(ngModel)]="selectedCurrencyAbbreviation">

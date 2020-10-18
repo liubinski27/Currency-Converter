@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { LanguageService } from './language.service';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +12,6 @@ export class AppComponent {
   title = 'Currency-Converter';
 
   constructor(
-    private translateService: TranslateService
-  ) {
-    translateService.addLangs(['en', 'ru']);
-    translateService.setDefaultLang('ru');
-    translateService.use('ru');
-  }
+    private languageService: LanguageService
+  ) { }
 }

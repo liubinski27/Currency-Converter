@@ -5,7 +5,10 @@ import { ICurrency } from '../models/currency';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss']
+  styleUrls: [
+    './footer.component.scss',
+    '../../assets/styles/scss/common.scss'
+  ]
 })
 
 export class FooterComponent implements OnInit {

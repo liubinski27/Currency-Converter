@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
+enum LanguagesList {
+  russian = 'ru',
+  english = 'en'
+}
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -8,6 +13,8 @@ import { TranslateService } from '@ngx-translate/core';
 })
 
 export class HeaderComponent {
+
+  eLanguagesList = LanguagesList;
 
   constructor(
     private translateService: TranslateService

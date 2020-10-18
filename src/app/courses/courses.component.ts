@@ -5,7 +5,10 @@ import { ICurrency } from '../models/currency';
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.scss']
+  styleUrls: [
+    './courses.component.scss',
+    '../../assets/styles/scss/common.scss'
+  ]
 })
 
 export class CoursesComponent implements OnInit {

@@ -21,6 +21,11 @@ export class ConverterService {
   getCurrencies(date: string) {
     const subject = new BehaviorSubject(this.currenciesList);
     const url = this.urlService.getUrl(date);
+    this.mapLoadedCurrencies(subject, url);
+    return subject;
+  }
+
+  mapLoadedCurrencies(subject, url: string) {
     this.http.get(url).subscribe((response: ICurrencyResponse[]) => {
       this.currenciesList = response.map(item => ({
         id: item.Cur_ID,
@@ -32,7 +37,6 @@ export class ConverterService {
       }));
       subject.next(this.currenciesList);
     })
-    return subject;
   }
 
   findCurrency(array: ICurrency[], currency: string) {

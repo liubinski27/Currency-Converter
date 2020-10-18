@@ -10,8 +10,8 @@ export class DateComponent {
 
   date: string;
 
-  @Output() onChanged: EventEmitter<string> = new EventEmitter();
+  @Output() onChange: EventEmitter<string> = new EventEmitter();
   sendDate() {
-    this.onChanged.emit(this.date);
+    this.onChange.emit(this.date);
   }
 }
