@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="footer">
+        <div class="logo">
+            <p>{{ 'footer.title' | translate }}</p>
+        </div>
+        <div *ngIf="currenciesList; else error" class="popularCourses">
+            <ul>
+                <li *ngFor="let currency of selectedCurrencies">
+                    <p>{{ currency.abbreviation }}</p>
+                    <p>{{ calculateRatesValue(currency.scale, currency.rate) }}</p>
+                </li>
+            </ul>
+        </div>
+        <ng-template #error>
+            <p class="loading">{{ 'currencies.loading' | translate }}</p>
+        </ng-template>
+    </div>
+</div>

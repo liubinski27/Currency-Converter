@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "Roboto";
+    src: url("../assets/styles/fonts/roboto/Roboto-Medium.ttf");
+}
+
+$componentContainerColor: #FFFAE2;
+
+.container {
+    font-family: "Roboto";
+    background-color: $componentContainerColor;
+    padding: 0;
+}
