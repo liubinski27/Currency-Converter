@@ -36,12 +36,12 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
-          provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
-          deps: [HttpClient]
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
       },
       useDefaultLang: false
-  })
+    })
   ],
   providers: [
     ConverterService,

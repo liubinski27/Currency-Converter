@@ -1,14 +1,11 @@
 import { ConverterService } from './../converter.service';
 import { Component, OnInit } from '@angular/core';
-import { ICurrency } from '../models/currency';
+import { ICurrency, ILoadedCurrency } from '../models/currency';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrls: [
-    './footer.component.scss',
-    '../../assets/styles/scss/common.scss'
-  ]
+  styleUrls: ['./footer.component.scss']
 })
 
 export class FooterComponent implements OnInit {
@@ -22,8 +19,8 @@ export class FooterComponent implements OnInit {
   ) { }
 
   getCurrencies(date: string = '') {
-    this.converterService.getCurrencies(date).subscribe((response: ICurrency[]) => {
-      this.currenciesList = response;
+    this.converterService.getCurrencies(date).subscribe((response: ILoadedCurrency[]) => {
+      this.currenciesList = ConverterService.processCurrencies(response);
       if (this.currenciesList) {
         this.addCurrenciesInFooter();
       }

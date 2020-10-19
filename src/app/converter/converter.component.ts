@@ -1,14 +1,11 @@
 import { ConverterService } from './../converter.service';
 import { Component, OnInit } from '@angular/core';
-import { ICurrency } from '../models/currency';
+import { ICurrency, ILoadedCurrency } from '../models/currency';
 
 @Component({
   selector: 'app-converter',
   templateUrl: './converter.component.html',
-  styleUrls: [
-    './converter.component.scss',
-    '../../assets/styles/scss/common.scss'
-  ]
+  styleUrls: ['./converter.component.scss']
 })
 
 export class ConverterComponent implements OnInit {
@@ -26,8 +23,8 @@ export class ConverterComponent implements OnInit {
   ) { }
 
   getCurrencies(date: string = '') {
-    this.converterService.getCurrencies(date).subscribe((response: ICurrency[]) => {
-      this.currenciesList = response;
+    this.converterService.getCurrencies(date).subscribe((response: ILoadedCurrency[]) => {
+      this.currenciesList = ConverterService.processCurrencies(response);
       if (this.currenciesList) {
         this.selectedCurrencyAbbreviation = this.currenciesList[0].abbreviation;
         this.getSavedData();
@@ -98,8 +95,8 @@ export class ConverterComponent implements OnInit {
       this.selectedCurrenciesAbbreviations.forEach(item => {
         const foundCurrencyInCurrenciesList = this.converterService.findCurrency(this.currenciesList, item);
         if (foundCurrencyInCurrenciesList) {
-          const SelectedCurrency = this.selectedCurrencies.find(item => item === foundCurrencyInCurrenciesList);
-          if (!SelectedCurrency) {
+          const selectedCurrency = this.selectedCurrencies.find(item => item === foundCurrencyInCurrenciesList);
+          if (!selectedCurrency) {
             this.selectedCurrencies.push(foundCurrencyInCurrenciesList);
           }
         }

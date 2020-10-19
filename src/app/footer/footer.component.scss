@@ -1,29 +1,22 @@
 $footerContainerColor: #ffe773;
 
-* {
-    box-sizing: border-box;
+* p {
     margin: 0;
-    padding: 0;
 }
 
 .container-fluid {
     background-color: $footerContainerColor;
-    padding: 0px 15px;
+    padding: 15px;
 
     .footer {
         display: flex;
         justify-content: space-between;
 
-        .logo {
-            p {
-                margin: 10px 10px 10px 0px;
-            }
-        }
-
         .popularCourses {
-            margin: 10px;
 
             ul {
+                padding: 0 5px;
+                margin: 5px 0;
                 li {
                     display: inline-block;
                     margin: 0px 10px;

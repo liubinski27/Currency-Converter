@@ -1,4 +1,4 @@
-export interface ICurrencyResponse {
+export interface ILoadedCurrency {
     Cur_ID: number,
     Date: Date,
     Cur_Abbreviation: string,

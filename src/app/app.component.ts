@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LanguageService } from './language.service';
 
 @Component({
@@ -7,11 +7,15 @@ import { LanguageService } from './language.service';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   title = 'Currency-Converter';
 
   constructor(
     private languageService: LanguageService
   ) { }
+
+  ngOnInit() {
+    this.languageService.setLanguage();
+  }
 }

@@ -9,9 +9,11 @@ export class LanguageService {
 
   constructor(
     private translateService: TranslateService
-  ) {
-    translateService.addLangs(['en', 'ru']);
-    translateService.setDefaultLang('ru');
-    translateService.use('ru');
+  ) { }
+
+  setLanguage() {
+    this.translateService.addLangs(['en', 'ru']);
+    this.translateService.setDefaultLang('ru');
+    this.translateService.use('ru');
   }
 }
