@@ -1,6 +1,6 @@
-import { ConverterService } from './../converter.service';
+import { ConverterService } from '../shared/services/converter.service';
 import { Component, OnInit } from '@angular/core';
-import { ICurrency, ILoadedCurrency } from '../models/currency';
+import { ICurrency, ILoadedCurrency } from '../shared/models/currency';
 
 @Component({
   selector: 'app-courses',
