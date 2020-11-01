@@ -15,6 +15,9 @@ export const ROUTES: Routes = [
   imports: [
     ConverterSharedModule,
     RouterModule.forChild(ROUTES)
+  ],
+  exports: [
+    CoursesComponent
   ]
 })
 

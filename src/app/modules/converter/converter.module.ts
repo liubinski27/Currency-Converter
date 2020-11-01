@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
+import { ConverterSharedModule } from '../shared/converter-shared.module';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ConverterComponent } from './converter.component';
 
-import { ConverterSharedModule } from '../shared/converter-shared.module';
-
 export const ROUTES: Routes = [
   { path: '', component: ConverterComponent }
 ];
-
 
 @NgModule({
   declarations: [
@@ -17,6 +15,9 @@ export const ROUTES: Routes = [
   imports: [
     ConverterSharedModule,
     RouterModule.forChild(ROUTES)
+  ],
+  exports: [
+    ConverterComponent
   ]
 })
 
