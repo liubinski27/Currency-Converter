@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ConverterComponent } from './converter.component';
 
-export const ROUTES: Routes = [
+export const routes: Routes = [
   { path: '', component: ConverterComponent }
 ];
 
@@ -14,7 +14,7 @@ export const ROUTES: Routes = [
   ],
   imports: [
     ConverterSharedModule,
-    RouterModule.forChild(ROUTES)
+    RouterModule.forChild(routes)
   ],
   exports: [
     ConverterComponent

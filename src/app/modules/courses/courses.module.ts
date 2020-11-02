@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { CoursesComponent } from './courses.component';
 
-export const ROUTES: Routes = [
+export const routes: Routes = [
   { path: '', component: CoursesComponent }
 ];
 
@@ -14,7 +14,7 @@ export const ROUTES: Routes = [
   ],
   imports: [
     ConverterSharedModule,
-    RouterModule.forChild(ROUTES)
+    RouterModule.forChild(routes)
   ],
   exports: [
     CoursesComponent
