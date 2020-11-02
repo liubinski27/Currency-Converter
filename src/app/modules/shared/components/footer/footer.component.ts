@@ -1,9 +1,9 @@
-import { ConverterService } from '../../../modules/shared/services/converter.service';
+import { ConverterService } from '../../services/converter.service';
 import { Component, OnInit } from '@angular/core';
-import { ICurrency, ILoadedCurrency } from '../../../modules/shared/models/currency';
+import { ICurrency, ILoadedCurrency } from '../../models/currency';
 
 @Component({
-  selector: 'app-footer',
+  selector: 'converter-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })

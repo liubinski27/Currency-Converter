@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { DateComponent } from './components/date/date.component';
 import { UrlService } from './services/url.service';
 import { LanguageService } from './services/language.service';
 
 @NgModule({
     declarations: [
-        HeaderComponent,
-        FooterComponent,
         DateComponent
+    ],
+    providers: [
+        UrlService,
+        LanguageService
     ],
     imports: [
         FormsModule,
@@ -26,14 +26,8 @@ import { LanguageService } from './services/language.service';
         CommonModule,
         FormsModule,
         TranslateModule,
-        HeaderComponent,
-        FooterComponent,
         DateComponent
-    ],
-    providers: [
-        UrlService,
-        LanguageService
-    ],
+    ]
 })
 
 export class SharedModule { }

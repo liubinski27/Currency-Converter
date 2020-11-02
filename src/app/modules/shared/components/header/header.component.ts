@@ -7,7 +7,7 @@ enum LanguagesList {
 }
 
 @Component({
-  selector: 'app-header',
+  selector: 'converter-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })

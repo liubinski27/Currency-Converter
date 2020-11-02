@@ -1,3 +1,4 @@
+<converter-header></converter-header>
 <div class="container-fluid">
     <app-date (onChange)="getCurrencies($event)"></app-date>
     <div *ngIf="currenciesList; else loading">
@@ -14,3 +15,4 @@
         <div class="loading">{{ 'currencies.loading' | translate }}</div>
     </ng-template>
 </div>
+<converter-footer></converter-footer>
