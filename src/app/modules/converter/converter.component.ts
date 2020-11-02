@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConverterService } from '../shared/services/converter.service';
 import { ICurrency, ILoadedCurrency } from '../shared/models/currency';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-converter',
@@ -19,8 +20,9 @@ export class ConverterComponent implements OnInit {
   savedCurrencyValue: number;
 
   constructor(
-    private converterService: ConverterService
-  ) { }
+    private converterService: ConverterService,
+    private toastrService: ToastrService
+  ) { this.toastrService.success('sfsdf', 'sdfsdf') }
 
   getCurrencies(date: string = '') {
     this.converterService.getCurrencies(date).subscribe((response: ILoadedCurrency[]) => {

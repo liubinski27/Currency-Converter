@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
@@ -17,6 +18,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
     AppComponent
   ],
   imports: [
+    ToastrModule.forRoot(),
     AppRoutingModule,
     SharedModule,
     BrowserModule,
