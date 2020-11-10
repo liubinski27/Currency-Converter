@@ -3,12 +3,14 @@ import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { tap, catchError } from "rxjs/operators";
+import { LanguageService } from '../shared/services/language.service';
 
 @Injectable()
 export class ConverterInterceptor implements HttpInterceptor {
 
   constructor(
-    public toasterService: ToastrService
+    public toastrService: ToastrService,
+    public languageService: LanguageService
   ) { }
 
   intercept(
@@ -19,13 +21,17 @@ export class ConverterInterceptor implements HttpInterceptor {
       tap(evt => {
         if (evt instanceof HttpResponse) {
           if (evt.body.length === 0) {
-            this.toasterService.warning('На выбранную дату данных нет', 'Ошибка', { positionClass: 'toast-bottom-right' });
+            this.languageService.getTranslate('converter.interceptor').subscribe((response: string) => {
+              this.toastrService.warning(response['warning.msg'], response['error'], { positionClass: 'toast-bottom-right' });
+            });
           };
         }
       }),
       catchError((error: any) => {
         if (error instanceof HttpErrorResponse) {
-          this.toasterService.error('Сервер не отвечает', 'Ошибка', { positionClass: 'toast-bottom-right' });
+          this.languageService.getTranslate('converter.interceptor').subscribe((response: string) => {
+            this.toastrService.warning(response['error.msg'], response['error'], { positionClass: 'toast-bottom-right' });
+          });
         }
         return of(error);
       }));
