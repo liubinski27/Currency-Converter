@@ -6,7 +6,10 @@ import { tap, catchError } from "rxjs/operators";
 
 @Injectable()
 export class ConverterInterceptor implements HttpInterceptor {
-  constructor(public toasterService: ToastrService) { }
+
+  constructor(
+    public toasterService: ToastrService
+  ) { }
 
   intercept(
     req: HttpRequest<any>,
