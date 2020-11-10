@@ -4,7 +4,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ConverterService } from './services/converter.service';
 import { SharedModule } from '../../shared/shared.module';
 import { FooterComponent } from './components/footer/footer.component';
-import { ConverterInterceptor } from './converter.interceptor';
+import { ConverterInterceptor } from '../../interceptors/converter.interceptor';
 
 @NgModule({
     declarations: [
