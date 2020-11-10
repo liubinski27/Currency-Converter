@@ -16,4 +16,8 @@ export class LanguageService {
     this.translateService.setDefaultLang('ru');
     this.translateService.use('ru');
   }
+
+  getTranslate(key: string) {
+    return this.translateService.get(key);
+  }
 }

@@ -4,5 +4,10 @@
     "currencies.loading": "Загрузка курсов валют...",
     "menu.currency.rates": "Курсы валют",
     "menu.currency.converter": "Онлайн конвертер",
-    "footer.title": "Курсы популярных валют на сегодня:"
+    "footer.title": "Курсы популярных валют на сегодня:",
+    "converter.interceptor": {
+        "warning.msg": "На выбранную дату данных нет",
+        "error.msg": "Сервер не отвечает",
+        "error": "Ошибка"
+    }
 }

@@ -1,6 +1,6 @@
-import { ConverterService } from './../converter.service';
 import { Component, OnInit } from '@angular/core';
-import { ICurrency, ILoadedCurrency } from '../models/currency';
+import { ConverterService } from '../shared/services/converter.service';
+import { ICurrency, ILoadedCurrency } from '../shared/models/currency';
 
 @Component({
   selector: 'app-converter',

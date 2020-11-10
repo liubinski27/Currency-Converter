@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { UrlService } from "./url.service";
-import { ILoadedCurrency } from './models/currency';
-import { ICurrency } from './models/currency';
+import { UrlService } from "../../../shared/services/url.service";
+import { ILoadedCurrency } from '../models/currency';
+import { ICurrency } from '../models/currency';
 
 @Injectable({
   providedIn: 'root'

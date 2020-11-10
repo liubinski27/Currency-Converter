@@ -1,20 +1,15 @@
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { RoutingModule } from './routing.module'
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ConverterComponent } from './converter/converter.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { CoursesComponent } from './courses/courses.component';
-import { DateComponent } from './date/date.component';
-import { ConverterService } from './converter.service';
-import { UrlService } from './url.service';
-import { LanguageService } from './language.service';
+import { HeaderComponent } from './layout/header/header.component';
+import { SharedModule } from './shared/shared.module';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -23,30 +18,22 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
 @NgModule({
   declarations: [
     AppComponent,
-    ConverterComponent,
-    HeaderComponent,
-    FooterComponent,
-    CoursesComponent,
-    DateComponent
+    HeaderComponent
   ],
   imports: [
-    RoutingModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    AppRoutingModule,
+    SharedModule,
     BrowserModule,
-    FormsModule,
-    HttpClientModule,
     TranslateModule.forRoot({
       loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
       },
       useDefaultLang: false
-    })
-  ],
-  providers: [
-    ConverterService,
-    UrlService,
-    LanguageService
+  })
   ],
   bootstrap: [AppComponent]
 })
