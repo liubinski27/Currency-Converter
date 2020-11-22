@@ -2,12 +2,12 @@
     <app-date (onChange)="getCurrencies($event)"></app-date>
     <div *ngIf="currenciesList; else loading">
         <div class="row" *ngFor="let cur of currenciesList">
-            <span class="col-md-1 col-sm-3 col-xs-3">{{ cur.scale }}</span>
+            <span class="col-md-1 col-sm-3 col-xs-3 scale">{{ cur.scale }}</span>
             <span class="col-md-1 col-sm-3 col-xs-3">{{ cur.abbreviation }}</span>
             <span class="col-md-1 col-sm-3 col-xs-3">{{ cur.rate }}</span>
             <span class="col-md-1 col-sm-3 col-xs-3">BYN</span>
 
-            <span class="col-md-6 col-sm-12 col-xs-12">{{ cur.name }}</span>
+            <span class="col-md-6 col-sm-12 col-xs-12 name">{{ cur.name }}</span>
         </div>
     </div>
     <ng-template #loading>

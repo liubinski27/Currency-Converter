@@ -14,6 +14,14 @@
         span:nth-child(even) {
             color: #a58900;
         }
+
+        span.scale {
+            text-align: right;
+        }
+
+        span.name {
+            text-align: left;
+        }
     }
 
     .row:nth-child(odd) {
