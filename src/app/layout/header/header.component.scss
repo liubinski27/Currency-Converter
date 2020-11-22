@@ -1,6 +1,7 @@
 $headerContainerColor: #ffe773;
 $componentContainerColor: #fffae2;
 $headerAColor: #000000;
+$headerActiveColor: #4447005d;
 
 * {
     box-sizing: border-box;
@@ -10,6 +11,11 @@ $headerAColor: #000000;
 
 .container-fluid {
     background-color: $headerContainerColor;
+
+    .active {
+        color: $headerActiveColor;
+        border-bottom: 2px solid $headerActiveColor;
+    }
 
     .navbar {
         padding: 35px;

@@ -15,10 +15,15 @@ enum LanguagesList {
 export class HeaderComponent {
 
   eLanguagesList = LanguagesList;
+  activePage: string
 
   constructor(
     private translateService: TranslateService
   ) { }
+
+  setActivePage(nameOfSelectedPage: string) {
+    this.activePage = nameOfSelectedPage;
+  } 
 
   changeLang(language: string) {
     this.translateService.use(language);
