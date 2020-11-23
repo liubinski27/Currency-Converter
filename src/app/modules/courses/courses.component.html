@@ -1,12 +1,20 @@
 <div class="container-fluid">
     <app-date (onChange)="getCurrencies($event)"></app-date>
+    <div class="sort">
+        <div>{{ 'sortCourses.title' | translate }}</div>
+        <select class="form-control" (change)="selectCoursesSorting()" [(ngModel)]="sortValue">
+            <option value="name_asc">{{ 'sortCourses.name_asc' | translate }}</option>
+            <option value="name_desc">{{ 'sortCourses.name_desc' | translate }}</option>
+            <option value="scale_desc">{{ 'sortCourses.scale_asc' | translate }}</option>
+            <option value="scale_asc">{{ 'sortCourses.scale_desc' | translate }}</option>
+        </select>
+    </div>
     <div *ngIf="currenciesList; else loading">
-        <div class="row" *ngFor="let cur of currenciesList">
-            <span class="col-md-1 col-sm-3 col-xs-3 scale">{{ cur.scale }}</span>
-            <span class="col-md-5 col-sm-12 col-xs-12 name">{{ cur.name }}</span>
+        <div class="row" *ngFor="let cur of currenciesList | currencySort: sortOrder : sortAttribute">
+            <span class="col-md-2 col-sm-6 col-xs-3 scale">{{ cur.scale }}</span>
+            <span class="col-md-5 col-sm-6 col-xs-12 name">{{ cur.name }}</span>
             <span class="col-md-1 col-sm-3 col-xs-3">{{ cur.abbreviation }}</span>
             <span class="col-md-1 col-sm-3 col-xs-3">{{ cur.rate }}</span>
-
             <span class="col-md-1 col-sm-3 col-xs-3">BYN</span>
         </div>
     </div>

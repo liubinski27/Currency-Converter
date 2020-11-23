@@ -1,4 +1,16 @@
 .container-fluid {
+    div.sort {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row nowrap;
+        align-items: center;
+        margin: 10px;
+        max-width: 350px;
+
+        select {
+            width: 210px;
+        }
+    }
 
     .row {
         border: 1px solid silver;
@@ -31,11 +43,11 @@
 
 @media (max-width: 768px) {
     .row {
-        padding: 0px!important;
+        padding: 0px !important;
 
         span {
             padding: 5px;
-            text-align: center!important;
+            text-align: center !important;
         }
     }
 }
