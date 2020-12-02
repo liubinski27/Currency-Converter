@@ -16,7 +16,7 @@ export class CoursesComponent implements OnInit {
   sortValue: string = 'name_asc';
   sortOrder: string = 'asc';
   sortAttribute: string = 'name';
-  isRu: boolean = true;
+  isLanguageRu: boolean = true;
 
   constructor(
     private converterService: ConverterService,
@@ -25,11 +25,11 @@ export class CoursesComponent implements OnInit {
     this.translateService.onLangChange.subscribe(event => {
       if (event.lang === 'ru') {
         console.log(event.lang)
-        this.isRu = true;
+        this.isLanguageRu = true;
       }
       else {
         console.log(event.lang)
-        this.isRu = false;
+        this.isLanguageRu = false;
         this.getCurrencies();
       }
     });
@@ -37,7 +37,7 @@ export class CoursesComponent implements OnInit {
 
   getCurrencies(date: string = '') {
     this.converterService.getCurrencies(date).subscribe((response: ILoadedCurrency[]) => {
-      if (this.isRu) {
+      if (this.isLanguageRu) {
         this.currenciesList = ConverterService.processCurrencies(response);
       }
       else {
