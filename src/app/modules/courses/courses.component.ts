@@ -1,6 +1,7 @@
 import { ConverterService } from '../shared/services/converter.service';
 import { Component, OnInit } from '@angular/core';
-import { ICurrency, ILoadedCurrency } from '../shared/models/currency';
+import { ICurrency, ILoadedCurrency, ILoadedCurrencyWithEN } from '../shared/models/currency';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-courses',
@@ -11,17 +12,43 @@ import { ICurrency, ILoadedCurrency } from '../shared/models/currency';
 export class CoursesComponent implements OnInit {
 
   currenciesList: ICurrency[];
-  sortValue: string ='name_asc';
+  currenciesListWithLangs: ILoadedCurrencyWithEN[];
+  sortValue: string = 'name_asc';
   sortOrder: string = 'asc';
   sortAttribute: string = 'name';
+  isRu: boolean = true;
 
   constructor(
-    private converterService: ConverterService
-  ) { }
+    private converterService: ConverterService,
+    private translateService: TranslateService
+  ) {
+    this.translateService.onLangChange.subscribe(event => {
+      if (event.lang === 'ru') {
+        console.log(event.lang)
+        this.isRu = true;
+      }
+      else {
+        console.log(event.lang)
+        this.isRu = false;
+        this.getCurrencies();
+      }
+    });
+  }
 
   getCurrencies(date: string = '') {
     this.converterService.getCurrencies(date).subscribe((response: ILoadedCurrency[]) => {
-      this.currenciesList = ConverterService.processCurrencies(response);
+      if (this.isRu) {
+        this.currenciesList = ConverterService.processCurrencies(response);
+      }
+      else {
+        this.converterService.getCurrenciesWithEnLang().subscribe((responseWithEN: ILoadedCurrencyWithEN[]) => {
+          response.forEach(item => {
+            const foundCurrency = responseWithEN.find(element => element.Cur_ID === item.Cur_ID);
+            item.Cur_Name = foundCurrency.Cur_Name_Eng;
+            this.currenciesList = ConverterService.processCurrencies(response);
+          });
+        });
+      }
     });
   }
 

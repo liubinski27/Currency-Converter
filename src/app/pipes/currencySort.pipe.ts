@@ -11,7 +11,6 @@ export type SortOrder = 'asc' | 'desc';
 export class CurrencySortPipe implements PipeTransform {
   transform(value: any[], sortOrder: SortOrder | string = 'asc', sortKey?: string, rate?: string): any {
     sortOrder = sortOrder && (sortOrder.toLowerCase() as any);
-    console.log(value, sortOrder, sortKey)
 
     if (!value || (sortOrder !== 'asc' && sortOrder !== 'desc')) return value;
 
