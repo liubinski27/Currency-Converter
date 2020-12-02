@@ -4,4 +4,9 @@
     input {
         width: 180px;
     }
+
+    .row {
+        flex-wrap: nowrap;
+        padding: 0 10px;
+    }
 }

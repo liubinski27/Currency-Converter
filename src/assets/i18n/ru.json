@@ -16,5 +16,6 @@
         "name_desc": "названию Я-А",
         "scale_asc": "стоимости от дешёвых",
         "scale_desc": "стоимости от дорогих"
-    }
+    },
+    "dateInputPlaceholder": "дд.мм.гггг"
 }

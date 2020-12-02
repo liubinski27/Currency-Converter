@@ -16,5 +16,6 @@
         "name_desc": "name Z-A",
         "scale_asc": "cost from cheapest",
         "scale_desc": "cost from expensive"
-    }
+    },
+    "dateInputPlaceholder": "dd.mm.yyyy"
 }
