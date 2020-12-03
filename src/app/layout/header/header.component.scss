@@ -1,6 +1,9 @@
 $headerContainerColor: #ffe773;
 $componentContainerColor: #fffae2;
 $headerAColor: #000000;
+$headerActiveColor: #4447005d;
+$languageDropdownBackgroundLarge: #e7e3ce;
+$languageDropdownBackgroundSmall: #FFFAE2;
 
 * {
     box-sizing: border-box;
@@ -10,6 +13,11 @@ $headerAColor: #000000;
 
 .container-fluid {
     background-color: $headerContainerColor;
+
+    .active {
+        color: $headerActiveColor;
+        border-bottom: 2px solid $headerActiveColor;
+    }
 
     .navbar {
         padding: 35px;
@@ -31,19 +39,20 @@ $headerAColor: #000000;
             align-items: flex-start;
         }
 
-        .dropdown-menu {
-            background: $componentContainerColor;
-            position: inherit;
-            text-align: center;
+        .changeLang {
+            .dropdown-menu { 
+                text-align: center;
+                border-radius: 0;
 
-            li {
-                border: 1px solid gray;
-                line-height: 30px;
-            }
+                li {
+                    border: 1px solid gray;
+                    line-height: 30px;
+                }
 
-            li:hover {
-                background: rgba(0, 0, 0, 0.1);
-                cursor: pointer;
+                li:hover {
+                    background: rgba(0, 0, 0, 0.1);
+                    cursor: pointer;
+                }
             }
         }
     }
@@ -59,7 +68,12 @@ $headerAColor: #000000;
     }
 
     .dropdown-menu {
+        background: $languageDropdownBackgroundLarge;
+        position: absolute;
         min-width: 120px;
+        max-width: 150px;
+        margin-left: auto;
+        right: 0px;
     }
 }
 
@@ -70,6 +84,9 @@ $headerAColor: #000000;
     }
 
     .dropdown-menu {
+        background: $languageDropdownBackgroundSmall;
+        position: inherit;
         min-width: 170px;
+        max-width: 200px;
     }
 }

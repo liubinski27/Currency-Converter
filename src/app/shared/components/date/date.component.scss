@@ -4,4 +4,13 @@
     input {
         width: 180px;
     }
+
+    .row {
+        flex-wrap: nowrap;
+        padding: 0 10px;
+    }
+}
+
+mat-datepicker-toggle {
+    width: 40px;
 }

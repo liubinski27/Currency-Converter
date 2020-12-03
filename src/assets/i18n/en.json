@@ -9,5 +9,13 @@
         "warning.msg": "No data available for the selected date",
         "error.msg": "Server isn't responsing",
         "error": "Error"
-    }
+    },
+    "sortCourses": {
+        "title": "Sort by:",
+        "name_asc": "name A-Z",
+        "name_desc": "name Z-A",
+        "scale_asc": "cost from cheapest",
+        "scale_desc": "cost from expensive"
+    },
+    "dateInputPlaceholder": "dd.mm.yyyy"
 }

@@ -18,7 +18,12 @@ export class ConverterService {
   ) { }
 
   getCurrencies(date: string) {
-    const url = this.urlService.getUrl(date);
+    const url = this.urlService.getUrlWithRates(date);
+    return this.http.get(url);
+  }
+
+  getCurrenciesWithEnLang() {
+    const url = this.urlService.getUrlWithEnLang();
     return this.http.get(url);
   }
 

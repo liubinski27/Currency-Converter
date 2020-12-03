@@ -11,7 +11,11 @@ export class UrlService {
     private http: HttpClient
   ) { }
 
-  getUrl(date: string) {
+  getUrlWithRates(date: string) {
     return ('https://www.nbrb.by/api/exrates/rates?ondate=' + date + '&periodicity=0');
+  }
+
+  getUrlWithEnLang() {
+    return ('https://www.nbrb.by/api/exrates/currencies');
   }
 }

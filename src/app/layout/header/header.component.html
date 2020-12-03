@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#">Converter</a>
+        <a class="navbar-brand">Converter</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -9,25 +9,25 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/courses">{{ 'menu.currency.rates' | translate }}</a>
+                    <a class="nav-link" routerLink="/courses" (click)="setActivePage('courses')"
+                        [class.active]="this.activePage == 'courses'">{{ 'menu.currency.rates' | translate }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/converter">{{ 'menu.currency.converter' | translate }}</a>
-                </li>
-                <li class="nav-item">
-                    <div class="changeLang">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            <img src="../../assets/styles/pictures/languageSelectionIcon.png" alt="language">
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li (click)="changeLang(eLanguagesList.RUSSIAN)">Русский</li>
-                            <li (click)="changeLang(eLanguagesList.ENGLISH)">English</li>
-                        </ul>
-                    </div>
+                    <a class="nav-link" routerLink="/converter" (click)="setActivePage('converter')"
+                        [class.active]="this.activePage == 'converter'">{{ 'menu.currency.converter' | translate }}</a>
                 </li>
             </ul>
+            <div class="changeLang">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="true">
+                    <img src="../../assets/styles/pictures/languageSelectionIcon.png" alt="language">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li (click)="changeLang(eLanguagesList.RUSSIAN)">Русский</li>
+                    <li (click)="changeLang(eLanguagesList.ENGLISH)">English</li>
+                </ul>
+            </div>
         </div>
     </nav>
 </div>
